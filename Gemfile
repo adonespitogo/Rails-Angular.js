@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+#heroku suggestions
+ruby '2.0.0'
+gem 'rails_12factor', group: :production
+
+#authentication
+gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
