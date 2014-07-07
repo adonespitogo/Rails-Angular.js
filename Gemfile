@@ -7,6 +7,9 @@ gem 'rails_12factor', group: :production
 # authentication
 gem 'devise'
 
+# avatar/attachments
+gem "paperclip", "~> 4.1"
+
 # opening letter in the browser
 gem "letter_opener", :group => :development
 
