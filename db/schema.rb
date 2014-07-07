@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707161203) do
+ActiveRecord::Schema.define(version: 20140707181324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins_branch_groups", id: false, force: true do |t|
+    t.integer "user_id",         null: false
+    t.integer "branch_group_id", null: false
+  end
+
+  add_index "admins_branch_groups", ["branch_group_id"], name: "index_admins_branch_groups_on_branch_group_id", using: :btree
+  add_index "admins_branch_groups", ["user_id"], name: "index_admins_branch_groups_on_user_id", using: :btree
+
+  create_table "branch_groups", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "restaurant_id"
+    t.integer  "main_branch_id"
+    t.integer  "country_id"
+    t.string   "fb_link"
+    t.string   "twitter_link"
+    t.string   "gplus_link"
+    t.string   "instagram_link"
+    t.string   "foursquare_link"
+    t.string   "meta_keywords"
+    t.string   "meta_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cuisines", force: true do |t|
     t.string   "slug"
@@ -24,6 +49,14 @@ ActiveRecord::Schema.define(version: 20140707161203) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "cuisines_restaurants", id: false, force: true do |t|
+    t.integer "cuisine_id",    null: false
+    t.integer "restaurant_id", null: false
+  end
+
+  add_index "cuisines_restaurants", ["cuisine_id", "restaurant_id"], name: "index_cuisines_restaurants_on_cuisine_id_and_restaurant_id", using: :btree
+  add_index "cuisines_restaurants", ["restaurant_id", "cuisine_id"], name: "index_cuisines_restaurants_on_restaurant_id_and_cuisine_id", using: :btree
 
   create_table "restaurants", force: true do |t|
     t.string   "name"
