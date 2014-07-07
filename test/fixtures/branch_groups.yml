@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  slug: MyString
+  restaurant_id: 1
+  main_branch_id: 1
+  country_id: 1
+  fb_link: MyString
+  twitter_link: MyString
+  gplus_link: MyString
+  instagram_link: MyString
+  foursquare_link: MyString
+  meta_keywords: MyString
+  meta_description: MyString
+
+two:
+  name: MyString
+  slug: MyString
+  restaurant_id: 1
+  main_branch_id: 1
+  country_id: 1
+  fb_link: MyString
+  twitter_link: MyString
+  gplus_link: MyString
+  instagram_link: MyString
+  foursquare_link: MyString
+  meta_keywords: MyString
+  meta_description: MyString

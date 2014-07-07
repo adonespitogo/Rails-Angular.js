@@ -1,9 +1,11 @@
-class CreateRestaurants < ActiveRecord::Migration
+class CreateBranchGroups < ActiveRecord::Migration
   def change
-    create_table :restaurants do |t|
+    create_table :branch_groups do |t|
       t.string :name
       t.string :slug
-      t.text :description
+      t.integer :restaurant_id
+      t.integer :main_branch_id
+      t.integer :country_id
       t.string :fb_link
       t.string :twitter_link
       t.string :gplus_link
