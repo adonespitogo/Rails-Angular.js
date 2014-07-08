@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708164530) do
+ActiveRecord::Schema.define(version: 20140708174126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: true do |t|
+    t.string   "activity"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "admins_branch_groups", id: false, force: true do |t|
     t.integer "user_id",         null: false
@@ -229,6 +236,16 @@ ActiveRecord::Schema.define(version: 20140708164530) do
     t.datetime "updated_at"
   end
 
+  create_table "payments", force: true do |t|
+    t.string   "reference"
+    t.string   "currency"
+    t.integer  "order_id"
+    t.decimal  "amount",     precision: 10, scale: 2
+    t.string   "method"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "restaurants", force: true do |t|
     t.string   "name"
     t.string   "slug"
@@ -246,6 +263,14 @@ ActiveRecord::Schema.define(version: 20140708164530) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+  end
+
+  create_table "user_activities", force: true do |t|
+    t.integer  "parent_id"
+    t.integer  "user_id"
+    t.integer  "activity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
