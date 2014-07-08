@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  branch_id: 1
+  delivery_price: 9.99
+  delivery_type: MyString
+  user_id: 1
+  full_name: MyString
+  phone_number: MyString
+  delivery_address: MyString
+  status: MyString
+  ip_address: MyString
+  delivered_by: 1
+  accepted_at: 2014-07-09 00:33:51
+  accepted_by: 1
+  rejected_at: 2014-07-09 00:33:51
+  rejected_by: 1
+
+two:
+  branch_id: 1
+  delivery_price: 9.99
+  delivery_type: MyString
+  user_id: 1
+  full_name: MyString
+  phone_number: MyString
+  delivery_address: MyString
+  status: MyString
+  ip_address: MyString
+  delivered_by: 1
+  accepted_at: 2014-07-09 00:33:51
+  accepted_by: 1
+  rejected_at: 2014-07-09 00:33:51
+  rejected_by: 1

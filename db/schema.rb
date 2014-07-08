@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708132951) do
+ActiveRecord::Schema.define(version: 20140708164530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20140708132951) do
 
   add_index "admins_branch_groups", ["branch_group_id"], name: "index_admins_branch_groups_on_branch_group_id", using: :btree
   add_index "admins_branch_groups", ["user_id"], name: "index_admins_branch_groups_on_user_id", using: :btree
+
+  create_table "branch_delivery_zones", force: true do |t|
+    t.integer  "branch_id"
+    t.integer  "zone_id"
+    t.decimal  "delivery_charge"
+    t.string   "delivery_charge_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "branch_groups", force: true do |t|
     t.string   "name"
@@ -41,6 +50,11 @@ ActiveRecord::Schema.define(version: 20140708132951) do
     t.datetime "updated_at"
   end
 
+  create_table "branch_groups_menu_categories", id: false, force: true do |t|
+    t.integer "menu_category_id", null: false
+    t.integer "branch_group_id",  null: false
+  end
+
   create_table "branches", force: true do |t|
     t.string   "slug"
     t.string   "name"
@@ -57,6 +71,19 @@ ActiveRecord::Schema.define(version: 20140708132951) do
     t.string   "meta_description"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "branches_employees", id: false, force: true do |t|
+    t.integer "branch_id",   null: false
+    t.integer "employee_id", null: false
+  end
+
+  add_index "branches_employees", ["branch_id", "employee_id"], name: "index_branches_employees_on_branch_id_and_employee_id", using: :btree
+  add_index "branches_employees", ["employee_id", "branch_id"], name: "index_branches_employees_on_employee_id_and_branch_id", using: :btree
+
+  create_table "branches_menu_categories", id: false, force: true do |t|
+    t.integer "branch_id",        null: false
+    t.integer "menu_category_id", null: false
   end
 
   create_table "countries", force: true do |t|
@@ -92,6 +119,112 @@ ActiveRecord::Schema.define(version: 20140708132951) do
     t.float    "lng"
     t.string   "address"
     t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "item_option_options", force: true do |t|
+    t.string   "name"
+    t.decimal  "price"
+    t.integer  "item_option_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "item_options", force: true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.integer  "option_limit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "item_options_menu_items", id: false, force: true do |t|
+    t.integer "menu_item_id",   null: false
+    t.integer "item_option_id", null: false
+  end
+
+  create_table "menu_categories", force: true do |t|
+    t.string   "slug"
+    t.string   "name"
+    t.string   "meta_keywords"
+    t.string   "meta_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "menu_categories_menu_items", id: false, force: true do |t|
+    t.integer "menu_category_id", null: false
+    t.integer "menu_item_id",     null: false
+  end
+
+  create_table "menu_items", force: true do |t|
+    t.string   "slug"
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "price",              precision: 10, scale: 2
+    t.boolean  "active"
+    t.string   "meta_keywords"
+    t.string   "meta_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "offers", force: true do |t|
+    t.integer  "branch_id"
+    t.string   "rule_type"
+    t.string   "rule_items_ids"
+    t.decimal  "rule_price_reached",      precision: 10, scale: 2
+    t.decimal  "result_amount",           precision: 10, scale: 2
+    t.decimal  "result_percentage"
+    t.string   "result_free_items"
+    t.integer  "result_free_items_limit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
+    t.datetime "expiry_date"
+    t.string   "token"
+    t.string   "published"
+  end
+
+  create_table "order_item_options", force: true do |t|
+    t.integer  "order_item_id"
+    t.string   "name"
+    t.decimal  "unit_price",    precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_items", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "order_item_id"
+    t.string   "order_item_name"
+    t.integer  "quantity"
+    t.decimal  "unit_price",      precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "branch_id"
+    t.decimal  "delivery_price"
+    t.string   "delivery_type"
+    t.string   "currency"
+    t.integer  "user_id"
+    t.string   "full_name"
+    t.string   "phone_number"
+    t.string   "delivery_address"
+    t.string   "status"
+    t.string   "ip_address"
+    t.integer  "delivered_by"
+    t.datetime "accepted_at"
+    t.integer  "accepted_by"
+    t.datetime "rejected_at"
+    t.integer  "rejected_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

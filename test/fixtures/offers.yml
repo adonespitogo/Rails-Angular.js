@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  branch_id: 1
+  rule_type: MyString
+  rule_items_ids: MyString
+  rule_price_reached: 9.99
+  result_amount: 9.99
+  result_percentage: 9.99
+  result_free_items: MyString
+  result_free_items_limit: 1
+
+two:
+  branch_id: 1
+  rule_type: MyString
+  rule_items_ids: MyString
+  rule_price_reached: 9.99
+  result_amount: 9.99
+  result_percentage: 9.99
+  result_free_items: MyString
+  result_free_items_limit: 1
