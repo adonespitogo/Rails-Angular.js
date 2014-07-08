@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  slug: MyString
+  name: MyString
+  address: MyString
+  phone_number: MyString
+  working_hour_start: 2014-07-08 20:51:58
+  working_hour_end: 2014-07-08 20:51:58
+  lat: 1.5
+  lng: 1.5
+  minimum_order_amount: 9.99
+  delivery_hour_start: 2014-07-08 20:51:58
+  delivery_hour_end: 2014-07-08 20:51:58
+  meta_keywords: MyString
+  meta_description: MyString
+
+two:
+  slug: MyString
+  name: MyString
+  address: MyString
+  phone_number: MyString
+  working_hour_start: 2014-07-08 20:51:58
+  working_hour_end: 2014-07-08 20:51:58
+  lat: 1.5
+  lng: 1.5
+  minimum_order_amount: 9.99
+  delivery_hour_start: 2014-07-08 20:51:58
+  delivery_hour_end: 2014-07-08 20:51:58
+  meta_keywords: MyString
+  meta_description: MyString

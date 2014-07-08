@@ -13,6 +13,9 @@ gem "paperclip", "~> 4.1"
 # opening letter in the browser
 gem "letter_opener", :group => :development
 
+# geolocation
+gem 'geokit-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 # Use postgresql as the database for Active Record

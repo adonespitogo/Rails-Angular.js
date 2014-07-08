@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707181324) do
+ActiveRecord::Schema.define(version: 20140708125158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,24 @@ ActiveRecord::Schema.define(version: 20140707181324) do
     t.string   "gplus_link"
     t.string   "instagram_link"
     t.string   "foursquare_link"
+    t.string   "meta_keywords"
+    t.string   "meta_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "branches", force: true do |t|
+    t.string   "slug"
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone_number"
+    t.time     "working_hour_start"
+    t.time     "working_hour_end"
+    t.float    "lat"
+    t.float    "lng"
+    t.decimal  "minimum_order_amount", precision: 10, scale: 2
+    t.time     "delivery_hour_start"
+    t.time     "delivery_hour_end"
     t.string   "meta_keywords"
     t.string   "meta_description"
     t.datetime "created_at"
