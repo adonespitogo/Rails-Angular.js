@@ -15,7 +15,8 @@ gem "letter_opener", :group => :development
 
 # geolocation
 gem 'geokit-rails'
-
+# replacement for fixtures
+gem "factory_girl_rails", "~> 4.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 # Use postgresql as the database for Active Record
