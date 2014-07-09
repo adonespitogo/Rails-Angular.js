@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708174126) do
+ActiveRecord::Schema.define(version: 20140709170559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -222,7 +222,6 @@ ActiveRecord::Schema.define(version: 20140708174126) do
     t.string   "delivery_type"
     t.string   "currency"
     t.integer  "user_id"
-    t.string   "full_name"
     t.string   "phone_number"
     t.string   "delivery_address"
     t.string   "status"
@@ -234,6 +233,8 @@ ActiveRecord::Schema.define(version: 20140708174126) do
     t.integer  "rejected_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "firstname"
+    t.string   "lastname"
   end
 
   create_table "payments", force: true do |t|
@@ -290,7 +291,6 @@ ActiveRecord::Schema.define(version: 20140708174126) do
     t.string   "unconfirmed_email"
     t.string   "role"
     t.string   "username"
-    t.string   "full_name"
     t.string   "phone_number"
     t.string   "address"
     t.datetime "created_at"
@@ -299,6 +299,8 @@ ActiveRecord::Schema.define(version: 20140708174126) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "firstname"
+    t.string   "lastname"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
