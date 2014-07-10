@@ -10,4 +10,6 @@ class Branch < ActiveRecord::Base
                             class_name: "User",
                             association_foreign_key: "employee_id",
                             join_table: "branches_employees"
+
+  has_and_belongs_to_many :menu_categories
 end
