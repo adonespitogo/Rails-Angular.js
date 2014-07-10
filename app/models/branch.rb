@@ -12,4 +12,5 @@ class Branch < ActiveRecord::Base
                             join_table: "branches_employees"
 
   has_and_belongs_to_many :menu_categories
+  has_many :orders
 end
