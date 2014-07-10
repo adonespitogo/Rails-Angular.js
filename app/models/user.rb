@@ -15,4 +15,6 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :branches,
                             join_table: "branches_employees",
                             foreign_key: "employee_id"
+
+  has_many :activities, class_name: "UserActivity"
 end
