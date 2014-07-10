@@ -1,6 +1,14 @@
 require 'machinist/active_record'
 require 'faker'
 
+BranchDeliveryZone.blueprint do
+
+end
+
+GeoZone.blueprint do
+
+end
+
 User.blueprint(:resto_admin) do
   role      { "resto_admin" }
   email     { Faker::Internet.safe_email }

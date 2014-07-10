@@ -5,4 +5,6 @@ class BranchGroup < ActiveRecord::Base
                           class_name: "User",
                           association_foreign_key: "user_id",
                           join_table: "admins_branch_groups"
+
+  has_many :branches
 end
