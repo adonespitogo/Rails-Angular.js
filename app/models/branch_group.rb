@@ -7,4 +7,6 @@ class BranchGroup < ActiveRecord::Base
                           join_table: "admins_branch_groups"
 
   has_many :branches
+
+  has_and_belongs_to_many :menu_categories
 end
