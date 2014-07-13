@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
                             foreign_key: "employee_id"
 
   has_many :activities, class_name: "UserActivity"
+
+  def is_resto_admin?
+    self.role == "employee" || self.role == "resto_admin"
+  end
 end

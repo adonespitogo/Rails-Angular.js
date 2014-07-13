@@ -1,4 +1,4 @@
-class RestoAdmin::HomeController < ApplicationController
+class RestoAdmin::HomeController < RestoAdmin::BaseController
   def index
     
   end
