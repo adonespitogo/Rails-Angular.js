@@ -1,5 +1,8 @@
 class RestoAdmin::BaseController < ApplicationController
+
   before_action :authenticate_user!, :validate_resto_admin
+
+  layout "resto_admin"
 
   private
   def validate_resto_admin
