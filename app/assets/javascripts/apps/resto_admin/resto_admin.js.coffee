@@ -7,4 +7,5 @@ app = angular.module('RestoAdminApp', [
   'MainController'
   'DashboardController'
   'RestaurantControllers'
+  'MenuItemsControllers'
 ])
