@@ -185,6 +185,7 @@ DEPENDENCIES
   angularjs-rails
   coffee-rails (~> 4.0.0)
   debugger
+  debugger-ruby_core_source
   devise
   faker (~> 1.4.1)
   font-awesome-sass
