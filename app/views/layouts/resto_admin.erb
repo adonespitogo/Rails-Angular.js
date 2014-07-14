@@ -29,8 +29,6 @@
           <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= "Hi, #{current_user.firstname} #{current_user.lastname}" %> <span class="fa fa-cog"></span></a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
             <li role="presentation"><a ui-sref="restaurant">My Restaurant</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
             <li role="presentation" class="divider"></li>
             <li role="presentation">
               <%= link_to(destroy_user_session_path, :method => :delete) do %>

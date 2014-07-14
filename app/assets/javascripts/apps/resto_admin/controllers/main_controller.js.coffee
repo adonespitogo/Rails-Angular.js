@@ -11,7 +11,7 @@ main_ctrl.controller "MainCtrl", [
   ($scope) ->
     $scope.navigation = [
       {ref: 'dashboard', text: 'Dashboard'}
-      {ref: 'menu_items', text: 'MenuItems'}
+      {ref: 'menu_items', text: 'Menu Items'}
       {ref: 'orders', text: 'Orders'}
       {ref: 'branches', text: 'Branches'}
       {ref: 'employees', text: 'Employees'}
