@@ -44,6 +44,6 @@ end
 group :production do
   # heroku suggestions
   ruby '2.0.0'
-  gem 'rails_12factor', group: :production
+  gem 'rails_12factor'
 end
 
