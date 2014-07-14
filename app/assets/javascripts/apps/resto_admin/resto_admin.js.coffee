@@ -5,5 +5,5 @@ app = angular.module('RestoAdminApp', [
   'templates'
   # # app modules
   'MainController'
-  # 'DashboardController'
+  'DashboardController'
 ])
