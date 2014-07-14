@@ -1,11 +1,20 @@
 ctrl = angular.module "DashboardController", []
 
-# ctrl.config ($stateProvider, $urlRouterProvider) ->
+ctrl.config ($stateProvider, $urlRouterProvider) ->
 
+  #template root path
+  tmp_root = "apps/resto_admin/views/"
 
-# ctrl.controller "DashboardCtrl", [
-#   '$scope',
-#   ($scope) ->
-#     console.log "DashboardCtrl"
-# ]
+  $stateProvider
+    .state('dashboard',
+      url: '/dashboard'
+      controller: 'DashboardCtrl'
+      templateUrl: tmp_root + 'dashboard.html'
+    )
+
+ctrl.controller "DashboardCtrl", [
+  '$scope',
+  ($scope) ->
+
+]
 
