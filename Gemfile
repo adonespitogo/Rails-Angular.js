@@ -7,7 +7,7 @@ gem "paperclip", "~> 4.1"
 # geolocation
 gem 'geokit-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-
+gem 'font-awesome-sass'
 gem 'rails', '4.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
