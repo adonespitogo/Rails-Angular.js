@@ -19,3 +19,4 @@
 //= require ../../lib/angular-1.2.19/angular
 //= require ../../lib/angular-ui-router/angular-ui-router
 //= require ../../lib/ui-bootstrap-tpls-0.11.0
+//= require_tree .
