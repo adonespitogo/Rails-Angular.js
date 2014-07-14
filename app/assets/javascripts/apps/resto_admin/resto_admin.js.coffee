@@ -3,7 +3,7 @@ app = angular.module('RestoAdminApp', [
   'ui.router'
   'ui.bootstrap'
   'templates'
-  # # app modules
+  # app modules
   'MainController'
   'DashboardController'
 ])

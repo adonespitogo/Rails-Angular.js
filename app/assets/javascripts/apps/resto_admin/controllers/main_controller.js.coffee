@@ -9,4 +9,11 @@ main_ctrl.config ($stateProvider, $urlRouterProvider) ->
 main_ctrl.controller "MainCtrl", [
   '$scope',
   ($scope) ->
+    $scope.navigation = [
+      {ref: 'dashboard', text: 'Dashboard'}
+      {ref: 'menu_items', text: 'MenuItems'}
+      {ref: 'orders', text: 'Orders'}
+      {ref: 'branches', text: 'Branches'}
+      {ref: 'employees', text: 'Employees'}
+    ]
 ]
