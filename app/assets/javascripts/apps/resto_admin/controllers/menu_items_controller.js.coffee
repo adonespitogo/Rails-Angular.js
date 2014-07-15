@@ -13,6 +13,13 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
       data:
         ncyBreadcrumbLabel: "Menu Items"
     )
+    .state('menu_items.new',
+      url: '/new'
+      controller: 'NewMenuItemCtrl'
+      templateUrl: tmp_root + 'new.html'
+      data:
+        ncyBreadcrumbLabel: "Create"
+    )
 
 ctrl.controller "MenuItemIndexCtrl", [
   '$scope', '$modal'
@@ -25,6 +32,12 @@ ctrl.controller "MenuItemIndexCtrl", [
         templateUrl: tmp_root + 'item_quick_edit.html'
         controller: 'ItemQuickEditCtrl'
       )
+]
+
+ctrl.controller "NewMenuItemCtrl", [
+  '$scope',
+  ($scope) ->
+
 ]
 
 ctrl.controller 'ItemQuickEditCtrl', [
