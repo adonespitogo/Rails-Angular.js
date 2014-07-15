@@ -6,10 +6,12 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
   tmp_root = "apps/resto_admin/views/menu_items/"
 
   $stateProvider
-    .state('menu_items',
+    .state('dashboard.menu_items',
       url: '/menu-items'
       controller: 'IndexCtrl'
       templateUrl: tmp_root + 'index.html'
+      data:
+        ncyBreadcrumbLabel: "Menu Items"
     )
 
 ctrl.controller "IndexCtrl", [

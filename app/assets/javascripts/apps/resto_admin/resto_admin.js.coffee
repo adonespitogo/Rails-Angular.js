@@ -2,6 +2,7 @@ app = angular.module('RestoAdminApp', [
   # libs
   'ui.router'
   'ui.bootstrap'
+  'ncy-angular-breadcrumb'
   'templates'
   # app modules
   'MainController'

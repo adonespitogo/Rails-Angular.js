@@ -10,6 +10,8 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
       url: '/dashboard'
       controller: 'DashboardCtrl'
       templateUrl: tmp_root + 'dashboard.html'
+      data:
+        ncyBreadcrumbLabel: 'Dashboard'
     )
 
 ctrl.controller "DashboardCtrl", [

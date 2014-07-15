@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="RestoAdminApp" ng-controller="MainCtrl">
+<html ng-app="RestoAdminApp" ng-controller="MainCtrl" lang="en">
 <head>
   <title>[Restaurant Name]</title>
   <%= stylesheet_link_tag    'resto_admin/application', media: 'all' %>
@@ -28,7 +28,7 @@
         <li class="dropdown">
           <a id="current-user" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= "Hi, #{current_user.firstname} #{current_user.lastname}" %> <span class="fa fa-cog"></span></a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="current-user">
-            <li role="presentation"><a ui-sref="restaurant">My Restaurant</a></li>
+            <li role="presentation"><a ui-sref="dashboard.restaurant">My Restaurant</a></li>
             <li role="presentation" class="divider"></li>
             <li role="presentation">
               <%= link_to(destroy_user_session_path, :method => :delete) do %>
@@ -41,7 +41,12 @@
     </nav>
   </div>
 </header>
-<div class="container-fluid">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div ncy-breadcrumb></div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-xs-12">
 

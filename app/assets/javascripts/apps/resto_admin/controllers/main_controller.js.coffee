@@ -12,10 +12,10 @@ main_ctrl.controller "MainCtrl", [
 
     $scope.navigation = [
       {ref: 'dashboard', text: 'Dashboard'}
-      {ref: 'menu_items', text: 'Menu Items'}
-      {ref: 'orders', text: 'Orders'}
-      {ref: 'branches', text: 'Branches'}
-      {ref: 'employees', text: 'Employees'}
+      {ref: 'dashboard.menu_items', text: 'Menu Items'}
+      {ref: 'dashboard.orders', text: 'Orders'}
+      {ref: 'dashboard.branches', text: 'Branches'}
+      {ref: 'dashboard.employees', text: 'Employees'}
     ]
 
     $scope.alerts = []
