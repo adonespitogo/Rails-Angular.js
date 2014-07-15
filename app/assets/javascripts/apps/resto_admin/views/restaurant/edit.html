@@ -1,1 +1,68 @@
-<a class="btn btn-success " ng-click="alerts.push({type: 'success', msg: 'hello'})">alert</a>
+<div  ui-view>
+  <form action="" role="form">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>My Restaurant</h1>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-4">
+          <img src="/assets/tmp/images/wingers-logo.png" alt="RESTAURANT LOGO HERE" class="img-thumbnail img-responsive" style="width: 100%; margin-bottom: 10px">
+          <a class="btn btn-info btn-block">Upload New Logo</a>
+          <hr>
+          <label for=""><strong>Social Media Links</strong></label>
+          <br>
+          <div class="input-group">
+            <span class="input-group-addon"><span class="fa fa-facebook-square"></span></span>
+            <input type="text" class="form-control">
+          </div>
+          <br>
+          <div class="input-group">
+            <span class="input-group-addon"><span class="fa fa-twitter-square"></span></span>
+            <input type="text" class="form-control">
+          </div>
+          <br>
+          <div class="input-group">
+            <span class="input-group-addon"><span class="fa fa-google-plus-square"></span></span>
+            <input type="text" class="form-control">
+          </div>
+          <br>
+          <div class="input-group">
+            <span class="input-group-addon"><span class="fa fa-instagram"></span></span>
+            <input type="text" class="form-control">
+          </div>
+          <br>
+          <div class="input-group">
+            <span class="input-group-addon"><span class="fa fa-foursquare"></span></span>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-8">
+          <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Slug</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Description</label>
+            <textarea cols="30" rows="10" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">Meta Keywords</label>
+            <textarea cols="30" rows="3" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">Meta Description</label>
+            <textarea cols="30" rows="5" class="form-control"></textarea>
+          </div>
+          <button class="btn btn-success btn-lg">Done</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

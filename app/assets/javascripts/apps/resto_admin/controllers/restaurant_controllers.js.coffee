@@ -8,24 +8,11 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
   $stateProvider
     .state('restaurant', {
       url: '/restaurant'
-      controller: 'ShowCtrl'
-      templateUrl: tmp_root + 'index.html'
-      data:
-        ncyBreadcrumbLabel: "My Restaurant"
-    })
-    .state('restaurant.edit', {
-      url: '/edit'
       controller: 'EditCtrl'
       templateUrl: tmp_root + 'edit.html'
       data:
-        ncyBreadcrumbLabel: "Edit"
+        ncyBreadcrumbLabel: "My Restaurant Details"
     })
-
-ctrl.controller "ShowCtrl", [
-  '$scope',
-  ($scope) ->
-
-]
 
 ctrl.controller "EditCtrl", [
   '$scope',
