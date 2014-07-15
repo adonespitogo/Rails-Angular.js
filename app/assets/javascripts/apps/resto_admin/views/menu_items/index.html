@@ -8,7 +8,7 @@
     <br>
     <div class="row">
       <div class="col-xs-3">
-        <a class="btn btn-default btn-block">
+        <a class="btn btn-default btn-block" ng-click="newItem()">
           <span class="fa fa-plus"></span>
           Create New Item
         </a>
@@ -60,7 +60,7 @@
               <td>Description goes here</td>
               <td>200.00</td>
               <td class="text-center">
-                <a><span class="fa fa-eye"></span></a>
+                <a ng-click="quickEdit()"><span class="fa fa-eye"></span></a>
                 <a><span class="fa fa-pencil"></span></a>
                 <a><span class="fa fa-trash-o"></span></a>
               </td>
