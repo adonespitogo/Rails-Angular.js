@@ -6,13 +6,15 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
   tmp_root = "apps/resto_admin/views/restaurant/"
 
   $stateProvider
-    .state('restaurant',
+    .state('restaurant', {
       url: '/restaurant'
-      controller: 'ShowCtrl'
-      templateUrl: tmp_root + 'show.html'
-    )
+      controller: 'EditCtrl'
+      templateUrl: tmp_root + 'edit.html'
+      data:
+        ncyBreadcrumbLabel: "My Restaurant Details"
+    })
 
-ctrl.controller "ShowCtrl", [
+ctrl.controller "EditCtrl", [
   '$scope',
   ($scope) ->
 

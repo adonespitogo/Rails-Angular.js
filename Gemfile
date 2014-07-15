@@ -16,7 +16,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem "seedbank"
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -44,6 +44,6 @@ end
 group :production do
   # heroku suggestions
   ruby '2.0.0'
-  gem 'rails_12factor', group: :production
+  gem 'rails_12factor'
 end
 

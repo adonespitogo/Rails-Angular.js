@@ -10,6 +10,8 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
       url: '/orders'
       controller: 'IndexCtrl'
       templateUrl: tmp_root + 'index.html'
+      data:
+        ncyBreadcrumbLabel: "Orders"
     )
 
 ctrl.controller "IndexCtrl", [

@@ -9,6 +9,7 @@ main_ctrl.config ($stateProvider, $urlRouterProvider) ->
 main_ctrl.controller "MainCtrl", [
   '$scope',
   ($scope) ->
+
     $scope.navigation = [
       {ref: 'dashboard', text: 'Dashboard'}
       {ref: 'menu_items', text: 'Menu Items'}
@@ -16,4 +17,12 @@ main_ctrl.controller "MainCtrl", [
       {ref: 'branches', text: 'Branches'}
       {ref: 'employees', text: 'Employees'}
     ]
+
+    $scope.alerts = []
+
+    $scope.addAlert = ->
+      $scope.alerts.push({msg: 'Another alert!'});
+
+    $scope.closeAlert = (index) ->
+      $scope.alerts.splice(index, 1)
 ]

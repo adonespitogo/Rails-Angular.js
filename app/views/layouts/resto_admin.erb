@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="RestoAdminApp" ng-controller="MainCtrl">
+<html ng-app="RestoAdminApp" ng-controller="MainCtrl" lang="en">
 <head>
   <title>[Restaurant Name]</title>
   <%= stylesheet_link_tag    'resto_admin/application', media: 'all' %>
@@ -25,11 +25,10 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li id="fat-menu" class="dropdown">
-          <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= "Hi, #{current_user.firstname} #{current_user.lastname}" %> <span class="fa fa-cog"></span></a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-            <li role="presentation"><a ui-sref="restaurant">My Restaurant</a></li>
-            <li role="presentation" class="divider"></li>
+        <li class="dropdown">
+          <a id="current-user" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= "Hi, #{current_user.firstname} #{current_user.lastname}" %> <span class="fa fa-cog"></span></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="current-user">
+            <li role="presentation"><a ui-sref="restaurant"><span class="fa fa-coffee"></span> My Restaurant</a></li>
             <li role="presentation">
               <%= link_to(destroy_user_session_path, :method => :delete) do %>
                 <i class="glyphicon glyphicon-off"> Logout</i>
@@ -41,13 +40,32 @@
     </nav>
   </div>
 </header>
-<% if notice %>
-  <p class ="notice"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert"><%= alert %></p>
-<% end %>
-<%= yield %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
 
+      <% if notice %>
+        <div ng-init="alerts.push({type: 'success', msg: '<%= notice %>'})" ng-show="false"></div>
+      <% end %>
+
+      <% if alert %>
+        <div ng-init="alerts.push({type: 'danger', msg: '<%= alert %>'})" ng-show="false"></div>
+      <% end %>
+
+      <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div ncy-breadcrumb></div>
+    </div>
+  </div>
+</div>
+<%= yield %>
+<hr>
+<footer class="text-center">
+  <strong>FoodCloud Inc. &copy;2014</strong>
+</footer>
+<hr>
 </body>
 </html>
