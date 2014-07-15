@@ -28,7 +28,7 @@
         <li class="dropdown">
           <a id="current-user" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= "Hi, #{current_user.firstname} #{current_user.lastname}" %> <span class="fa fa-cog"></span></a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="current-user">
-            <li role="presentation"><a ui-sref="dashboard.restaurant">My Restaurant</a></li>
+            <li role="presentation"><a ui-sref="restaurant">My Restaurant</a></li>
             <li role="presentation" class="divider"></li>
             <li role="presentation">
               <%= link_to(destroy_user_session_path, :method => :delete) do %>
@@ -44,11 +44,6 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <div ncy-breadcrumb></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
 
       <% if notice %>
         <div ng-init="alerts.push({type: 'success', msg: '<%= notice %>'})" ng-show="false"></div>
@@ -59,6 +54,11 @@
       <% end %>
 
       <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div ncy-breadcrumb></div>
     </div>
   </div>
 </div>

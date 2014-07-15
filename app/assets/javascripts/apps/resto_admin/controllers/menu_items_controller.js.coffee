@@ -6,7 +6,7 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
   tmp_root = "apps/resto_admin/views/menu_items/"
 
   $stateProvider
-    .state('dashboard.menu_items',
+    .state('menu_items',
       url: '/menu-items'
       controller: 'IndexCtrl'
       templateUrl: tmp_root + 'index.html'

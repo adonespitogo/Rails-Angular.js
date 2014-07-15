@@ -13,3 +13,7 @@ app = angular.module('RestoAdminApp', [
   'BranchesControllers'
   'EmployeesControllers'
 ])
+
+app.config ($breadcrumbProvider) ->
+    $breadcrumbProvider.setOptions
+      prefixStateName: 'dashboard'
