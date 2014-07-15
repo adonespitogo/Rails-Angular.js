@@ -28,8 +28,7 @@
         <li class="dropdown">
           <a id="current-user" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= "Hi, #{current_user.firstname} #{current_user.lastname}" %> <span class="fa fa-cog"></span></a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="current-user">
-            <li role="presentation"><a ui-sref="restaurant"><span class="fa fa-coffee"></span>My Restaurant</a></li>
-            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a ui-sref="restaurant"><span class="fa fa-coffee"></span> My Restaurant</a></li>
             <li role="presentation">
               <%= link_to(destroy_user_session_path, :method => :delete) do %>
                 <i class="glyphicon glyphicon-off"> Logout</i>

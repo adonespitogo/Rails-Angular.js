@@ -1,1 +1,72 @@
-Menu Items List - index view
+<div ui-view>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Menu Items</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">
+        <a class="btn btn-default btn-block">
+          <span class="fa fa-plus"></span>
+          Create New Item
+        </a>
+        <h4><strong>Categories</strong></h4>
+        <div class="list-group">
+          <a ui-sref="menu_items" class="list-group-item" ui-sref-active="active">All Items</a>
+          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Appetizers</a>
+          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Main Courses</a>
+          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Burgers</a>
+        </div>
+        <a class="btn btn-default btn-block">
+          <span class="fa fa-plus"></span>
+          Create New Category
+        </a>
+      </div>
+      <div class="col-xs-9">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th width="25%">Name</th>
+              <th width="50%">Description</th>
+              <th width="15%">Price (BD)</th>
+              <th width="10%">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Item name goes here</td>
+              <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, dicta neque itaque nostrum excepturi eveniet, adipisci corrupti, eaque accusantium optio, autem fugiat perspiciatis facere. Quia vitae libero, exercitationem hic! Saepe.</td>
+              <td>200.00</td>
+              <td class="text-center">
+                <a><span class="fa fa-eye"></span></a>
+                <a><span class="fa fa-pencil"></span></a>
+                <a><span class="fa fa-trash-o"></span></a>
+              </td>
+            </tr>
+            <tr>
+              <td>Item name goes here</td>
+              <td>Description goes here</td>
+              <td>200.00</td>
+              <td class="text-center">
+                <a><span class="fa fa-eye"></span></a>
+                <a><span class="fa fa-pencil"></span></a>
+                <a><span class="fa fa-trash-o"></span></a>
+              </td>
+            </tr>
+            <tr>
+              <td>Item name goes here</td>
+              <td>Description goes here</td>
+              <td>200.00</td>
+              <td class="text-center">
+                <a><span class="fa fa-eye"></span></a>
+                <a><span class="fa fa-pencil"></span></a>
+                <a><span class="fa fa-trash-o"></span></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
