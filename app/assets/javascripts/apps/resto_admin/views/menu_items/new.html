@@ -33,6 +33,15 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="exampleInputFile">Product Photo</label>
+              <input type="file" id="exampleInputFile">
+              <p class="help-block">Select product photo.</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-xs-4">
         <h2>Publishing and Related Details</h2>
@@ -51,6 +60,96 @@
           </select>
         </div>
         <button class="btn btn-success" value="">Save and Publish</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <h3>Item Options</h3>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <p>
+              <b>Size</b>
+              <span class="pointer pull-right fa fa-times"></span>
+              <span class="pointer pull-right fa fa-pencil"></span>
+            </p>
+            <p>
+              <small><i>Select 1 item:</i></small>
+              <ul>
+                <li>Regular <span class="label label-success pull-right">+20.00</span></li>
+                <li>Medium <span class="label label-success pull-right">+40.00</span></li>
+                <li>Large <span class="label label-success pull-right">+30.00</span></li>
+              </ul>
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="col-xs-6">
+        <h3>Add Item Option</h3>
+        <ul class="list-group">
+          <li class="list-group-item">
+              <tabset>
+                <tab>
+                  <tab-heading>
+                    <span class="fa fa-plus"></span>
+                    Add new option from collection
+                  </tab-heading>
+                  <div class="page-title text-center">
+                    <h4>Options Collection</h4>
+                  </div>
+                  <div class="item-options-collection-con">
+                    <div class="list-group">
+                      <a class="list-group-item active">
+                        <div class="row">
+                          <div class="col-xs-1">
+                            <span class="fa fa-check text-success"></span>
+                          </div>
+                          <div class="col-xs-11">
+                              <p>
+                                <b>Size</b>
+                              </p>
+                              <small><i>Select 1 item:</i></small>
+                              <ul>
+                                <li>Regular <span class="label label-success pull-right">+20.00</span></li>
+                                <li>Medium <span class="label label-success pull-right">+40.00</span></li>
+                                <li>Large <span class="label label-success pull-right">+30.00</span></li>
+                              </ul>
+                          </div>
+                        </div>
+                      </a>
+                      <a class="list-group-item" ng-repeat="i in [1, 2, 3]">
+                        <div class="row">
+                          <div class="col-xs-1">
+                          </div>
+                          <div class="col-xs-11">
+                              <p>
+                                <b>Cheese</b>
+                              </p>
+                              <small><i>Select 1 item:</i></small>
+                              <ul>
+                                <li>Without Cheese  <span class="label label-success pull-right">+0.00</span></li>
+                                <li>With Cheese  <span class="label label-success pull-right">+20.00</span></li>
+                              </ul>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <a class="btn btn-success"><span class="fa fa-plus"></span> Add selected options</a>
+                  </div>
+                </tab>
+                <tab>
+                  <tab-heading>
+                    <span class="fa fa-plus"></span>
+                    Create new option
+                  </tab-heading>
+                  <div class="tab-body">
+                    
+                  </div>
+                </tab>
+              </tabset>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
