@@ -13,6 +13,7 @@ app = angular.module('RestoAdminApp', [
   'OrdersControllers'
   'BranchesControllers'
   'EmployeesControllers'
+  'CategoriesControllers'
 ])
 
 app.config ($breadcrumbProvider) ->
