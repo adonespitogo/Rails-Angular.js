@@ -1,0 +1,51 @@
+<div class="modal-header">
+  <div class="modal-title">
+    <h4>Options Collection</h4>
+  </div>
+</div>
+<div class="modal-body menu-items-page">
+  <div class="item-options-collection-con">
+    <div class="list-group">
+      <a class="list-group-item active">
+        <div class="row">
+          <div class="col-xs-1">
+            <span class="fa fa-check text-success"></span>
+          </div>
+          <div class="col-xs-11">
+              <p>
+                <b>Size</b>
+              </p>
+              <small><i>Customer selects 1 item:</i></small>
+              <ul>
+                <li>Regular <span class="label label-success pull-right">+20.00</span></li>
+                <li>Medium <span class="label label-success pull-right">+40.00</span></li>
+                <li>Large <span class="label label-success pull-right">+30.00</span></li>
+              </ul>
+          </div>
+        </div>
+      </a>
+      <a class="list-group-item" ng-repeat="i in [1, 2, 3]">
+        <div class="row">
+          <div class="col-xs-1">
+            <span class="pointer pull-right fa fa-check"></span>
+          </div>
+          <div class="col-xs-11">
+              <p>
+                <b>Cheese</b>
+              </p>
+              <small><i>Customer selects 1 item:</i></small>
+              <ul>
+                <li>Without Cheese  <span class="label label-success pull-right">+0.00</span></li>
+                <li>With Cheese  <span class="label label-success pull-right">+20.00</span></li>
+              </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="cancel()"><span class="fa fa-plus"></span> Add selected options</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
+
