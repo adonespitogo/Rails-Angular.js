@@ -37,7 +37,15 @@ ctrl.controller "MenuItemIndexCtrl", [
 ctrl.controller "NewMenuItemCtrl", [
   '$scope',
   ($scope) ->
-
+    $scope.selectedBanches = []
+    $scope.branches = [ {id: 1, name: "Branch 1"}, {id: 2, name: "Branch 2"}, {id: 3, name: "Branch 3"}]
+    $scope.branchesSelectSettings =
+      displayProp: 'name'
+    $scope.categories = [
+      {id: 1, label: "Category 1"}
+      {id: 2, label: "Category 2"}
+    ]
+    $scope.selectedCategories = []
 ]
 
 ctrl.controller 'ItemQuickEditCtrl', [
