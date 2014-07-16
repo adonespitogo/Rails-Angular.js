@@ -3,5 +3,15 @@
     overflow-y: scroll;
     max-height: 350px;
     margin-bottom: 10px;
+    .list-group-item{
+      .fa-check{
+        display: none;
+      }
+      &.active, &:hover{
+        .fa-check{
+          display: block;
+        }
+      }
+    }
   }
 }
