@@ -66,6 +66,7 @@ GEM
       geokit (~> 1.5)
       rails (>= 3.0)
     hike (1.2.3)
+    htmlcompressor (0.1.1)
     i18n (0.6.9)
     jbuilder (2.1.1)
       activesupport (>= 3.0.0, < 5)
@@ -183,6 +184,7 @@ DEPENDENCIES
   faker (~> 1.4.1)
   font-awesome-sass
   geokit-rails
+  htmlcompressor
   jbuilder (~> 2.0)
   jquery-rails
   letter_opener
