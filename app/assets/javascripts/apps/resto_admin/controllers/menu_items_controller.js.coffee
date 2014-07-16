@@ -27,6 +27,12 @@ ctrl.controller "MenuItemIndexCtrl", [
         templateUrl: templates.templatePath 'menu_items/item_quick_edit.html'
         controller: 'ItemQuickEditCtrl'
       )
+
+    $scope.newCategory = ->
+      modal = $modal.open(
+        templateUrl: templates.templatePath 'categories/new.html'
+        controller: 'NewCategoryCtrl'
+      )
 ]
 
 ctrl.controller "NewMenuItemCtrl", [
