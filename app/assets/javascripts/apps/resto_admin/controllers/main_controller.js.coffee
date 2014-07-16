@@ -6,8 +6,7 @@ main_ctrl.config ($stateProvider, $urlRouterProvider) ->
   #default state of application
   $urlRouterProvider.otherwise('/dashboard')
 
-main_ctrl.controller "MainCtrl", [
-  '$scope',
+main_ctrl.controller "MainCtrl",
   ($scope) ->
 
     $scope.navigation = [
@@ -25,4 +24,3 @@ main_ctrl.controller "MainCtrl", [
 
     $scope.closeAlert = (index) ->
       $scope.alerts.splice(index, 1)
-]

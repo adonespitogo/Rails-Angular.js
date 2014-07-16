@@ -1,7 +1,6 @@
 ctrl = angular.module 'CategoriesControllers', []
 
-ctrl.controller 'NewCategoryCtrl', [
-  '$scope', '$modalInstance',
+ctrl.controller 'NewCategoryCtrl',
   ($scope, $modalInstance) ->
 
     $scope.cancel =  ->
@@ -15,4 +14,3 @@ ctrl.controller 'NewCategoryCtrl', [
       showUncheckAll: false
     }
 
-]

@@ -14,8 +14,6 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
         ncyBreadcrumbLabel: "My Restaurant Details"
     })
 
-ctrl.controller "EditCtrl", [
-  '$scope',
+ctrl.controller "EditCtrl",
   ($scope) ->
 
-]
