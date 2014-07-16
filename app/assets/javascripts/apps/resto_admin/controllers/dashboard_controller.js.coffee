@@ -14,9 +14,7 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
         ncyBreadcrumbLabel: 'Dashboard'
     )
 
-ctrl.controller "DashboardCtrl", [
-  '$scope',
+ctrl.controller "DashboardCtrl",
   ($scope) ->
 
-]
 

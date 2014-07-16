@@ -18,8 +18,7 @@ ctrl.config ($stateProvider, $urlRouterProvider, templatesProvider) ->
         ncyBreadcrumbLabel: "Create"
     )
 
-ctrl.controller "MenuItemIndexCtrl", [
-  '$scope', '$modal', 'templates'
+ctrl.controller "MenuItemIndexCtrl",
   ($scope, $modal, templates) ->
 
     $scope.quickEdit = ->
@@ -33,10 +32,8 @@ ctrl.controller "MenuItemIndexCtrl", [
         templateUrl: templates.templatePath 'categories/new.html'
         controller: 'NewCategoryCtrl'
       )
-]
 
-ctrl.controller "NewMenuItemCtrl", [
-  '$scope', 'templates', '$modal'
+ctrl.controller "NewMenuItemCtrl",
   ($scope, templates, $modal) ->
     $scope.selectedBanches = []
     $scope.branches = [ {id: 1, name: "Branch 1"}, {id: 2, name: "Branch 2"}, {id: 3, name: "Branch 3"}]
@@ -59,28 +56,21 @@ ctrl.controller "NewMenuItemCtrl", [
         templateUrl: templates.templatePath 'menu_items/new_item_option.html'
         controller: 'NewItemOptionCtrl'
       )
-]
 
-ctrl.controller 'ItemQuickEditCtrl', [
-  '$scope', '$modalInstance',
+ctrl.controller 'ItemQuickEditCtrl',
   ($scope, $modalInstance) ->
 
     $scope.cancel =  ->
       $modalInstance.dismiss()
-]
 
-ctrl.controller 'SelectItemOptionsCtrl', [
-  '$scope', '$modalInstance',
+ctrl.controller 'SelectItemOptionsCtrl',
   ($scope, $modalInstance) ->
 
     $scope.cancel =  ->
       $modalInstance.dismiss()
-]
 
-ctrl.controller 'NewItemOptionCtrl', [
-  '$scope', '$modalInstance',
+ctrl.controller 'NewItemOptionCtrl',
   ($scope, $modalInstance) ->
 
     $scope.cancel =  ->
       $modalInstance.dismiss()
-]

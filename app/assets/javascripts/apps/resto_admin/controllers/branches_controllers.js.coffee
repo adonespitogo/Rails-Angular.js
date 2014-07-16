@@ -14,8 +14,5 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
         ncyBreadcrumbLabel: "Branches"
     )
 
-ctrl.controller "IndexCtrl", [
-  '$scope',
+ctrl.controller "IndexCtrl",
   ($scope) ->
-    
-]
