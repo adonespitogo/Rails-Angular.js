@@ -23,5 +23,6 @@ module Foodcloud
       g.fixture_replacement :machinist
     end
     config.angular_templates.htmlcompressor = true
+    config.angular_templates.ignore_prefix  = %w( templates/ apps/resto_admin/views/ )
   end
 end
