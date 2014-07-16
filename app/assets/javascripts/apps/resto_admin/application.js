@@ -19,4 +19,5 @@
 //= require lodash
 //= require angular-dropdown-multiselect
 //= require angular-ui-router
+//= require bootstrap/collapse
 //= require_tree .
