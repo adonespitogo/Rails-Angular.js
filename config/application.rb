@@ -22,5 +22,6 @@ module Foodcloud
     config.generators do |g|
       g.fixture_replacement :machinist
     end
+    config.angular_templates.htmlcompressor = true
   end
 end
