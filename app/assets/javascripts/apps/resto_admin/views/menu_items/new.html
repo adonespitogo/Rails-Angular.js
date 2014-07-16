@@ -27,8 +27,7 @@
           <div class="col-xs-6">
             <div class="form-group">
               <label for="">Branches</label>
-              <select name="" id="" class="form-control">
-                <option value="">Branch1</option>
+              <div ng-dropdown-multiselect="" options="branches" selected-model="selectedBanches" extra-settings="branchesSelectSettings"></div>
               </select>
             </div>
           </div>
@@ -54,10 +53,8 @@
           <input type="text" class="form-control">
         </div>
         <div class="form-group">
-          <label for="">Categories</label>
-          <select name="" id="" class="form-control">
-            <option value="">Category1</option>
-          </select>
+          <label for="">Categories </label>
+              <div ng-dropdown-multiselect="" options="categories" selected-model="selectedCategories" ></div>
         </div>
         <button class="btn btn-success" value="">Save and Publish</button>
       </div>

@@ -4,6 +4,7 @@ app = angular.module('RestoAdminApp', [
   'ui.bootstrap'
   'ncy-angular-breadcrumb'
   'templates'
+  'angularjs-dropdown-multiselect'
   # app modules
   'MainController'
   'DashboardController'
