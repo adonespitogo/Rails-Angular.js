@@ -17,7 +17,15 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
       data:
         ncyBreadcrumbLabel: "Branch Information"
     )
+    .state('branches.edit',
+      url: '/edit'
+      controller: 'BranchesShowCtrl'
+      templateUrl: 'branches/edit.html'
+      data:
+        ncyBreadcrumbLabel: "Edit Branch Information"
+    )
 
 ctrl.controller "BranchesIndexCtrl", ($scope) ->
 
 ctrl.controller "BranchesShowCtrl", ($scope) ->
+ctrl.controller "BranchesEditCtrl", ($scope) ->
