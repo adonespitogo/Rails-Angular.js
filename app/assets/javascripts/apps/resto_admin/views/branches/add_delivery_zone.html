@@ -1,0 +1,135 @@
+<div class="modal-header">
+  <h3 class="modal-title">Add Delivery Zone</h3>
+</div>
+<div class="modal-body">
+  <tabset>
+    <tab heading="Choose from available zones">
+      <br>
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control pull-right" placeholder="Search delivery zone to add">
+          <div class="input-group-addon"><span class="fa fa-search"></span></div>
+        </div>
+      </div>
+      <div class="list-group">
+        <div class="list-group-item active">
+          <div class="row">
+            <div class="col-xs-6"><b>Address</b></div>
+            <div class="col-xs-3"><b>Distance</b></div>
+            <div class="col-xs-3"><b>Delivery Charge</b></div>
+          </div>
+        </div>
+        <a class="list-group-item">
+          <div class="row">
+            <div class="col-xs-6"><b>I.T. Park, Lahug, Cebu City</b></div>
+            <div class="col-xs-3"><b>1 km</b></div>
+            <div class="col-xs-3">
+              <b>10.00</b>
+              <span class="fa fa-check text-success pull-right"></span>
+            </div>
+          </div>
+        </a>
+        <a class="list-group-item">
+          <div class="row">
+            <div class="col-xs-6"><b>I.T. Park, Lahug, Cebu City</b></div>
+            <div class="col-xs-3"><b>1 km</b></div>
+            <div class="col-xs-3">
+              <b>10.00</b>
+            </div>
+          </div>
+        </a>
+        <a class="list-group-item">
+          <div class="row">
+            <div class="col-xs-6"><b>I.T. Park, Lahug, Cebu City</b></div>
+            <div class="col-xs-3"><b>1 km</b></div>
+            <div class="col-xs-3">
+              <b>10.00</b>
+            </div>
+          </div>
+        </a>
+        <a class="list-group-item">
+          <div class="row">
+            <div class="col-xs-6"><b>I.T. Park, Lahug, Cebu City</b></div>
+            <div class="col-xs-3"><b>1 km</b></div>
+            <div class="col-xs-3">
+              <b>10.00</b>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="text-center">
+        <ul class="pagination">
+          <li><a href="#">&laquo;</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+      </div>
+    </tab>
+    <tab heading="Create new delivery zones">
+      <br>
+
+          <ul class="list-group">
+            <li class="list-group-item active">
+              <div class="row">
+                <div class="col-xs-6"><b>Address</b></div>
+                <div class="col-xs-3"><b>Distance</b></div>
+                <div class="col-xs-3"><b>Delivery Charge</b></div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-xs-6">
+                  Mabolo, Cebu City
+                </div>
+                <div class="col-xs-3">5 km</div>
+                <div class="col-xs-3">
+                  20.00
+                  <span class="fa fa-times pointer pull-right"></span>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-xs-6">
+                  Mabolo, Cebu City
+                </div>
+                <div class="col-xs-3">5 km</div>
+                <div class="col-xs-3">
+                  20.00
+                  <span class="fa fa-times pointer pull-right"></span>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+      <form action="" role="form">
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search place">
+                <div class="input-group-addon"><span class="fa fa-search"></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <input type="text" class="form-control" placeholder="Area radius">
+          </div>
+          <div class="col-xs-3">
+            <button class="btn btn-success btn-block"><span class="fa fa-plus"></span>Add</button>
+          </div>
+        </div>
+      </form>
+
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3925.2208432770644!2d123.9088056!3d10.3242034!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99917f05d760d%3A0xb1f318aef8b60cfb!2sCrown+7%2C+Pope+John+Paul+II+Ave%2C+Cebu+City%2C+Philippines!5e0!3m2!1sen!2s!4v1405619478385" width="100%" height="300" frameborder="0" style="border:0"></iframe>
+    </tab>
+  </tabset>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="ok()"><span class="fa fa-plus"></span> Add Delivery Zone(s)</button>
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

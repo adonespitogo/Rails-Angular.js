@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716172254) do
+ActiveRecord::Schema.define(version: 20140717212901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140716172254) do
     t.string   "delivery_charge_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "radius"
   end
 
   create_table "branch_groups", force: true do |t|
