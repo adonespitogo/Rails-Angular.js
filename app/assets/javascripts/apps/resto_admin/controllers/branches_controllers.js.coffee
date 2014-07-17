@@ -19,13 +19,23 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
     )
     .state('branches.edit',
       url: '/edit'
-      controller: 'BranchesShowCtrl'
+      controller: 'BranchesEditCtrl'
       templateUrl: 'branches/edit.html'
       data:
-        ncyBreadcrumbLabel: "Edit Branch Information"
+        ncyBreadcrumbLabel: "Edit Branch"
     )
 
 ctrl.controller "BranchesIndexCtrl", ($scope) ->
 
 ctrl.controller "BranchesShowCtrl", ($scope) ->
-ctrl.controller "BranchesEditCtrl", ($scope) ->
+
+ctrl.controller "BranchesEditCtrl", ($scope, $modal) ->
+  console.log $modal
+  $scope.addDeliveryZone = ->
+    modal = $modal.open
+              templateUrl: 'branches/add_delivery_zone.html'
+              controller: 'BranchesAddDeliveryZoneCtrl'
+
+ctrl.controller "BranchesAddDeliveryZoneCtrl", ($scope, $modalInstance) ->
+
+
