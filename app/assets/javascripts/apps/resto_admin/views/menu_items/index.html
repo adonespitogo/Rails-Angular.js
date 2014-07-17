@@ -31,9 +31,9 @@
           <thead>
             <tr>
               <th width="25%">Name</th>
-              <th width="50%">Description</th>
+              <th width="45%">Description</th>
               <th width="15%">Price (BD)</th>
-              <th width="10%">Actions</th>
+              <th width="15%">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -42,9 +42,11 @@
               <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, dicta neque itaque nostrum excepturi eveniet, adipisci corrupti, eaque accusantium optio, autem fugiat perspiciatis facere. Quia vitae libero, exercitationem hic! Saepe.</td>
               <td>200.00</td>
               <td class="text-center">
-                <a><span class="fa fa-eye"></span></a>
-                <a><span class="fa fa-pencil"></span></a>
-                <a><span class="fa fa-trash-o"></span></a>
+                <div class="btn-group">
+                  <a class="btn btn-primary btn-xs"><span class="fa fa-eye"></span></a>
+                  <a class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
+                  <a class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
+                </div>
               </td>
             </tr>
             <tr>
@@ -52,9 +54,11 @@
               <td>Description goes here</td>
               <td>200.00</td>
               <td class="text-center">
-                <a><span class="fa fa-eye"></span></a>
-                <a><span class="fa fa-pencil"></span></a>
-                <a><span class="fa fa-trash-o"></span></a>
+                <div class="btn-group">
+                  <a class="btn btn-primary btn-xs"><span class="fa fa-eye"></span></a>
+                  <a class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
+                  <a class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
+                </div>
               </td>
             </tr>
             <tr>
@@ -62,9 +66,11 @@
               <td>Description goes here</td>
               <td>200.00</td>
               <td class="text-center">
-                <a ng-click="quickEdit()"><span class="fa fa-eye"></span></a>
-                <a><span class="fa fa-pencil"></span></a>
-                <a><span class="fa fa-trash-o"></span></a>
+                <div class="btn-group">
+                  <a class="btn btn-primary btn-xs" ng-click="quickEdit()"><span class="fa fa-eye"></span></a>
+                  <a class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
+                  <a class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
+                </div>
               </td>
             </tr>
           </tbody>
