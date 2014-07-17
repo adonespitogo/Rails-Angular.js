@@ -26,6 +26,4 @@ ctrl.controller "OrdersIndexCtrl", ($scope, $modal) ->
       )
 
 
-ctrl.controller 'ShowCtrl', ($scope, $modalInstance) ->
-  $scope.cancel = ->
-    $modalInstance.dismiss('cancel')
+ctrl.controller 'ShowCtrl', ($scope) ->

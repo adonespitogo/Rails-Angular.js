@@ -1,25 +1,94 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <div class="modal-header">
-        <button ng-click="cancel()" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">[Item Name Here]</h4>
+      <div class="page-title">
+        <h1>Order Information
+          <div class="btn-group pull-right" dropdown>
+            <button type="button" class="btn btn-success">Accept</button>
+            <button type="button" class="btn btn-success dropdown-toggle">
+              <span class="caret"></span>
+              <span class="sr-only">Split button!</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a>Reject <span class="pull-right fa fa-times"></span></a></li>
+              <li><a>Delivered<span class="pull-right fa fa-paper-plane"></span></a></li>
+            </ul>
+          </div>
+        </h1>
       </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-xs-6">
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="bs-component">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <div class="panel-title">
+              Order Item Details
+            </div>
+          </div>
+          <div class="panel-body">
             <ul class="list-group">
               <li class="list-group-item">
-                Name: Adones Pitogo
+                <div class="row">
+                  <div class="col-xs-6">Item Name:</div>
+                  <div class="col-xs-6">Egg and Rice Salad</div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-xs-6">Branch:</div>
+                  <div class="col-xs-6">Branch 1</div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-xs-6">Price:</div>
+                  <div class="col-xs-6">200.00</div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-xs-6">Type:</div>
+                  <div class="col-xs-6">Pick Up</div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-xs-6">Delivery Charge:</div>
+                  <div class="col-xs-6">0.00</div>
+                </div>
               </li>
             </ul>
           </div>
-          <div class="col-xs-6"></div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Close</button>
-      </div>
+    </div>
+    <div class="col-xs-4">
+      <ul class="list-group">
+        <li class="list-group-item active">
+          Customer Details
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-xs-6">Customer Name:</div>
+            <div class="col-xs-6">Adones Pitogo</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-xs-6">Phone Number:</div>
+            <div class="col-xs-6">123456789</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-xs-6">Delivery Address:</div>
+            <div class="col-xs-6">36A Borbajo St., Talamban, Cebu City</div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
