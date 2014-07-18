@@ -19,6 +19,6 @@ class User < ActiveRecord::Base
   has_many :activities, class_name: "UserActivity"
 
   def is_resto_admin?
-    self.role == "employee" || self.role == "resto_admin"
+    self.role == "resto_admin"
   end
 end
