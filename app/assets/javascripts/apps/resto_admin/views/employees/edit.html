@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="page-title">
+    <h1>Edit Employee</h1>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <form action="" role="form" class="form-horizontal">
+        <div class="form-group">
+          <div class="col-xs-4">
+            <label for="">First Name</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-xs-4">
+            <label for="">Last Name</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-xs-4">
+            <label for="">Employment Date</label>
+            <div class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-4">
+            <label for="">Phone Number</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-xs-4">
+            <label for="">Email</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-xs-4">
+            <label for="">Assigned Branches</label>
+            <div ng-dropdown-multiselect="" options="branches" selected-model="selectedBranches" ></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <button class="btn btn-success pull-right">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
