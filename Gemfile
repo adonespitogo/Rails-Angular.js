@@ -10,6 +10,7 @@ gem 'geokit-rails'
 gem 'rabl'
 gem 'oj'
 gem 'will_paginate', '~> 3.0'
+gem "paranoia", "~> 2.0"
 
 # Assets
 gem 'font-awesome-sass'

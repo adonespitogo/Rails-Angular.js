@@ -102,6 +102,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paranoia (2.0.2)
+      activerecord (~> 4.0)
     pg (0.17.1)
     polyglot (0.3.5)
     rabl (0.9.3)
@@ -205,6 +207,7 @@ DEPENDENCIES
   machinist (>= 2.0.0.beta2)
   oj
   paperclip (~> 4.1)
+  paranoia (~> 2.0)
   pg
   rabl
   rails (= 4.1.0)
