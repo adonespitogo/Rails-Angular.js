@@ -19,7 +19,11 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
     )
 
 ctrl.controller "MenuItemIndexCtrl",
-  ($scope, $modal) ->
+  ($scope, $modal, MenuItem) ->
+
+    MenuItem.getList().then (menu_items) ->
+      $scope.menu_items = menu_items
+
 
     $scope.quickEdit = ->
       newItemModal = $modal.open(

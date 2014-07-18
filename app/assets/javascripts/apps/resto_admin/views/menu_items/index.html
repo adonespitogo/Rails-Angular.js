@@ -45,37 +45,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Item name goes here</td>
-              <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, dicta neque itaque nostrum excepturi eveniet, adipisci corrupti, eaque accusantium optio, autem fugiat perspiciatis facere. Quia vitae libero, exercitationem hic! Saepe.</td>
-              <td>200.00</td>
+            <tr ng-repeat="item in menu_items">
+              <td><b>{{item.name}}</b></td>
+              <td>{{item.description}}</td>
+              <td>{{item.price}}</td>
               <td class="text-center">
                 <div class="btn-group">
                   <a class="btn btn-primary btn-xs"><span class="fa fa-eye"></span></a>
-                  <a class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
-                  <a class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Item name goes here</td>
-              <td>Description goes here</td>
-              <td>200.00</td>
-              <td class="text-center">
-                <div class="btn-group">
-                  <a class="btn btn-primary btn-xs"><span class="fa fa-eye"></span></a>
-                  <a class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
-                  <a class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Item name goes here</td>
-              <td>Description goes here</td>
-              <td>200.00</td>
-              <td class="text-center">
-                <div class="btn-group">
-                  <a class="btn btn-primary btn-xs" ng-click="quickEdit()"><span class="fa fa-eye"></span></a>
                   <a class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
                   <a class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
                 </div>

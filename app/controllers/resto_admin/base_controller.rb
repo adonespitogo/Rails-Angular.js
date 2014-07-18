@@ -1,7 +1,7 @@
 class RestoAdmin::BaseController < ApplicationController
 
   before_action :authenticate_user!, :validate_resto_admin
-  before_action :branch_group
+  before_action :load_branch_group
 
   layout "resto_admin"
 
@@ -17,7 +17,7 @@ class RestoAdmin::BaseController < ApplicationController
       end
     end
 
-    def branch_group
+    def load_branch_group
       @branch_group = current_user.branch_groups.first
     end
 end
