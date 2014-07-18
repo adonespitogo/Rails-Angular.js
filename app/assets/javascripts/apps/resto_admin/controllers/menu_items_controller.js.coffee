@@ -45,16 +45,10 @@ ctrl.controller "NewMenuItemCtrl",
     ]
     $scope.selectedCategories = []
 
-    $scope.selectItemOptions = ->
+    $scope.addMoreOptions = ->
       modal = $modal.open(
-        templateUrl: 'menu_items/select_item_options.html'
-        controller: 'SelectItemOptionsCtrl'
-      )
-
-    $scope.newItemOption = ->
-      modal = $modal.open(
-        templateUrl: 'menu_items/new_item_option.html'
-        controller: 'NewItemOptionCtrl'
+        templateUrl: 'menu_items/add_more_options.html'
+        controller: 'AddMoreItemOptionsCtrl'
       )
 
 ctrl.controller 'ItemQuickEditCtrl',
@@ -63,13 +57,7 @@ ctrl.controller 'ItemQuickEditCtrl',
     $scope.cancel =  ->
       $modalInstance.dismiss()
 
-ctrl.controller 'SelectItemOptionsCtrl',
-  ($scope, $modalInstance) ->
-
-    $scope.cancel =  ->
-      $modalInstance.dismiss()
-
-ctrl.controller 'NewItemOptionCtrl',
+ctrl.controller 'AddMoreItemOptionsCtrl',
   ($scope, $modalInstance) ->
 
     $scope.cancel =  ->
