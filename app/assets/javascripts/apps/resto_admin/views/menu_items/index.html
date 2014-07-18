@@ -16,10 +16,18 @@
         </a>
         <h4><strong>Categories</strong></h4>
         <div class="list-group">
-          <a ui-sref="menu_items" class="list-group-item" ui-sref-active="active">All Items</a>
-          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Appetizers</a>
-          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Main Courses</a>
-          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Burgers</a>
+          <a ui-sref="menu_items" class="list-group-item" ui-sref-active="active">
+            All Items <span class="fa fa-chevron-right pull-right"></span>
+          </a>
+          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Appetizers
+             <span class="fa fa-chevron-right pull-right"></span>
+          </a>
+          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Main Courses
+             <span class="fa fa-chevron-right pull-right"></span>
+          </a>
+          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Burgers
+             <span class="fa fa-chevron-right pull-right"></span>
+          </a>
         </div>
         <a class="btn btn-default btn-block" ng-click="newCategory()">
           <span class="fa fa-plus"></span>
@@ -76,6 +84,17 @@
           </tbody>
         </table>
       </div>
+    </div>
+    <div class="text-center">
+      <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>
     </div>
   </div>
 </div>
