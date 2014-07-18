@@ -1,1 +1,94 @@
-employees list/index view
+<div ui-view>
+  <div class="container">
+    <div class="page-title">
+      <h1>
+        Employees
+        <a ui-sref="employees.new" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Add New Employee</a>
+        <form action="" class="form-inline pull-right" role="form">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search employees">
+            <div class="input-group-addon">
+              <span class="fa fa-search"></span>
+            </div>
+          </div>
+        </form>
+      </h1>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-4">
+        <h4><b>Branches</b></h4>
+        <div class="list-group">
+          <a class="list-group-item active">
+            All <span class="fa fa-chevron-right pull-right"></span>
+          </a>
+          <a class="list-group-item">Branch 1 <span class="fa fa-chevron-right pull-right"></span></a>
+          <a class="list-group-item">Branch 2 <span class="fa fa-chevron-right pull-right"></span></a>
+        </div>
+      </div>
+      <div class="col-xs-8">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Full Name</th>
+              <th>Assigned Branch</th>
+              <th>Date Employeed</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sadiq Al Mubarak</td>
+              <td>Branch 2</td>
+              <td>July 1, 2014</td>
+              <td>
+                <div class="btn-group">
+                  <a href="" class="btn btn-xs btn-primary"><span class="fa fa-eye"></span></a>
+                  <a href="" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>
+                  <a href="" class="btn btn-xs btn-danger"><span class="fa fa-trash-o"></span></a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Sadiq Al Mubarak</td>
+              <td>Branch 2</td>
+              <td>July 1, 2014</td>
+              <td>
+                <div class="btn-group">
+                  <a href="" class="btn btn-xs btn-primary"><span class="fa fa-eye"></span></a>
+                  <a href="" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>
+                  <a href="" class="btn btn-xs btn-danger"><span class="fa fa-trash-o"></span></a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Sadiq Al Mubarak</td>
+              <td>Branch 2</td>
+              <td>July 1, 2014</td>
+              <td>
+                <div class="btn-group">
+                  <a href="" class="btn btn-xs btn-primary"><span class="fa fa-eye"></span></a>
+                  <a href="" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>
+                  <a href="" class="btn btn-xs btn-danger"><span class="fa fa-trash-o"></span></a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="text-center">
+          <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
