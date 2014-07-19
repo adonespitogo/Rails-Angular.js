@@ -20,7 +20,7 @@ class BranchGroup < ActiveRecord::Base
   end
 
   def menu_items_by_category(category_id)
-    ## include items under a branch_group category
+    ## include items under a branch_group only
     # menu_items.joins("LEFT JOIN branch_groups_menu_categories ON branch_groups_menu_categories.branch_group_id = branch_groups.id")
     #           .joins("LEFT JOIN menu_categories ON menu_categories.id = branch_groups_menu_categories.menu_category_id")
     #           .where("menu_categories.id = ?", category_id)
