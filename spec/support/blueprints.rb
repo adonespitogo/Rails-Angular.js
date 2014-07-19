@@ -20,3 +20,6 @@ User.blueprint(:resto_admin) do
   phone_number { Faker::PhoneNumber.cell_phone }
   address { "#{Faker::Address.street_address}, #{Faker::Address.state}, #{Faker::Address.country}" }
 end
+BranchMenuCategory.blueprint do
+  # Attributes here
+end
