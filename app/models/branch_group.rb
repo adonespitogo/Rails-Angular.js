@@ -30,7 +30,7 @@ class BranchGroup < ActiveRecord::Base
   end
 
   def branches_categories
-    MenuCategory.joins("LEFT JOIN branch_menu_categories ON branch_menu_categories.menu_category_id = menu_categories.id")
+    MenuCategory.uniq.joins("LEFT JOIN branch_menu_categories ON branch_menu_categories.menu_category_id = menu_categories.id")
       .joins("LEFT JOIN branches ON branch_menu_categories.branch_id = branches.id")
       .joins("LEFT JOIN branch_groups ON branch_groups.id = branches.branch_group_id")
       .where("branch_groups.id = ?", self.id)

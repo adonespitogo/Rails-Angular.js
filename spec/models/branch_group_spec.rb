@@ -4,13 +4,17 @@ RSpec.describe BranchGroup, :type => :model do
   before(:each) do
     @branch_group = BranchGroup.make!
     @restaurant = @branch_group.restaurant
+
     @branch1 = Branch.make!
     @branch2 = Branch.make!
     @branch_group.branches << [@branch1, @branch2]
+
     @branch_menu_category1 = BranchMenuCategory.make!(branch: @branch1)
     @branch_menu_category2 = BranchMenuCategory.make!(branch: @branch2)
+
     @menu_category1 = @branch_menu_category1.menu_category
     @menu_category2 = @branch_menu_category2.menu_category
+
     @menu_item1 = MenuItem.make!
     @menu_item2 = MenuItem.make!
 
@@ -29,8 +33,10 @@ RSpec.describe BranchGroup, :type => :model do
     end
 
     it "shoould return all categories in all each branches" do
-      BranchMenuCategory.make!(branch: @branch1)
-      assert_equal @branch_group.branches_categories.count, 3
+      BranchMenuCategory.make!(branch: @branch1, menu_category: @menu_category2)
+      BranchMenuCategory.make!(branch: @branch2, menu_category: @menu_category1)
+      # @branch2.branch_menu_categories << @branch_menu_category1
+      assert_equal 2, @branch_group.branches_categories.count
     end
   end
 end

@@ -19,14 +19,9 @@
           <a ui-sref="menu_items" class="list-group-item" ui-sref-active="active">
             All Items <span class="fa fa-chevron-right pull-right"></span>
           </a>
-          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Appetizers
-             <span class="fa fa-chevron-right pull-right"></span>
-          </a>
-          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Main Courses
-             <span class="fa fa-chevron-right pull-right"></span>
-          </a>
-          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Burgers
-             <span class="fa fa-chevron-right pull-right"></span>
+          <a ng-repeat="c in categories" ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">
+            {{c.name}}
+            <span class="fa fa-chevron-right pull-right"></span>
           </a>
         </div>
         <a class="btn btn-default btn-block" ng-click="newCategory()">
