@@ -39,15 +39,16 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development do
+  gem 'debugger-ruby_core_source'
+  gem 'debugger'
+end
+
 group :development, :test do
   gem "letter_opener" # opening letter in the browser
   gem 'rspec-rails', '~> 3.0.0'
   gem 'faker', '~> 1.4.1'
   gem 'machinist', '>= 2.0.0.beta2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  # gem 'spring'
-  gem 'debugger-ruby_core_source'
-  gem 'debugger'
 end
 
 group :production do

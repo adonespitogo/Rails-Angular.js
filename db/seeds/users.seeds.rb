@@ -2,7 +2,7 @@ after :branch_groups do
 
   User.delete_all
 
-  User.create(
+  user = User.new(
     id: 1,
     email: "employee@foodcloud.com",
     password: "12345678",
@@ -11,8 +11,10 @@ after :branch_groups do
     firstname: "Resto",
     lastname: "Employee"
   )
+  user.skip_confirmation!
+  user.save
 
-  User.create(
+  user = User.new(
     id: 2,
     email: "resto.admin@foodcloud.com",
     password: "12345678",
@@ -21,6 +23,8 @@ after :branch_groups do
     firstname: "Resto",
     lastname: "Admin"
   )
+  user.skip_confirmation!
+  user.save
 
   # add resto-admin as admin to default branchGroup
   BranchGroup.first.admins.clear
