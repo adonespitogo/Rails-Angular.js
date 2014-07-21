@@ -5,4 +5,5 @@ class MenuItem < ActiveRecord::Base
   has_and_belongs_to_many :branch_menu_categories,
                             class_name: "BranchMenuCategory",
                             join_table: "menu_categories_menu_items"
+  has_many :menu_categories, through: :branch_menu_categories
 end

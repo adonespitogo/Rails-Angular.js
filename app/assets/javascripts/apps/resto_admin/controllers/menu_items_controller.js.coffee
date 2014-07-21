@@ -4,11 +4,19 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
 
   $stateProvider
     .state('menu_items',
+      abstract: true
       url: '/menu-items'
+      template: '<div ui-view></div>'
+      data:
+        ncyBreadcrumbLabel: "Menu Items"
+    )
+    .state('menu_items.list',
+      url: '/list'
       controller: 'MenuItemIndexCtrl'
       templateUrl: 'menu_items/index.html'
       data:
         ncyBreadcrumbLabel: "Menu Items"
+        ncyBreadcrumbParent: "menu_items"
     )
     .state('menu_items.new',
       url: '/new'
@@ -16,13 +24,14 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
       templateUrl: 'menu_items/new.html'
       data:
         ncyBreadcrumbLabel: "Create"
+        ncyBreadcrumbParent: "menu_items.list"
     )
 
 ctrl.controller "MenuItemIndexCtrl",
   ($scope, $modal, MenuItem, Category) ->
 
     MenuItem.getList().then (menu_items) ->
-      $scope.menu_items = menu_items
+        $scope.menu_items = menu_items
 
     Category.getList().then (categories) ->
       $scope.categories = categories
@@ -39,6 +48,15 @@ ctrl.controller "MenuItemIndexCtrl",
         templateUrl: 'categories/new.html'
         controller: 'NewCategoryCtrl'
       )
+
+    $scope.filterByCategory = (cat_id) ->
+      $scope.categoryId = cat_id
+      MenuItem.getList({category_id: cat_id}).then (menu_items) ->
+          $scope.menu_items = menu_items
+    $scope.allMenuItems = ->
+      $scope.categoryId = null
+      MenuItem.getList().then (menu_items) ->
+          $scope.menu_items = menu_items
 
 ctrl.controller "NewMenuItemCtrl",
   ($scope, $modal) ->
