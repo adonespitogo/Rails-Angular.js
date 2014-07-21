@@ -36,9 +36,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
 group :development do
   gem 'debugger-ruby_core_source'
   gem 'debugger'
