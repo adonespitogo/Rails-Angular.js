@@ -28,7 +28,7 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
     )
 
 ctrl.controller "MenuItemIndexCtrl",
-  ($scope, $modal, MenuItem, Category) ->
+  ($scope, $modal, Category) ->
 
     $scope.menu_items_url = "/resto_admin/menu_items"
 
@@ -58,22 +58,29 @@ ctrl.controller "MenuItemIndexCtrl",
       $scope.menu_items_url = "/resto_admin/menu_items"
 
 ctrl.controller "NewMenuItemCtrl",
-  ($scope, $modal) ->
-    $scope.selectedBanches = []
-    $scope.branches = [ {id: 1, name: "Branch 1"}, {id: 2, name: "Branch 2"}, {id: 3, name: "Branch 3"}]
-    $scope.branchesSelectSettings =
+  ($scope, $modal, Branch, Category, MenuItem) ->
+
+    Branch.getList().then (branches) ->
+      $scope.branches = branches
+    $scope.branchesSelectSettings = $scope.categoriesSelectSettings =
       displayProp: 'name'
-    $scope.categories = [
-      {id: 1, label: "Category 1"}
-      {id: 2, label: "Category 2"}
-    ]
-    $scope.selectedCategories = []
+
+    Category.getList().then (cats) ->
+      $scope.categories = cats
 
     $scope.addMoreOptions = ->
       modal = $modal.open(
         templateUrl: 'menu_items/add_more_options.html'
         controller: 'AddMoreItemOptionsCtrl'
       )
+
+    $scope.item = {branches: [], categories: []}
+
+    $scope.save = (active) ->
+      $scope.item.deleted_at = if active then null else new Date()
+      MenuItem.post($scope.item).then (item) ->
+        console.log item
+
 
 ctrl.controller 'ItemQuickEditCtrl',
   ($scope, $modalInstance) ->

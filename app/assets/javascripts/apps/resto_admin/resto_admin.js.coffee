@@ -18,6 +18,7 @@ app = angular.module('RestoAdminApp', [
   # services
   'MenuItemServices'
   'CategoryServices'
+  'BranchServices'
 ])
 
 app.config ($breadcrumbProvider, RestangularProvider) ->

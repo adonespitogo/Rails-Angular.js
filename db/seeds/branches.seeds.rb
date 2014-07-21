@@ -1,6 +1,7 @@
 Branch.delete_all
 
 5.times do |i|
+  i += 1
   Branch.create(
     id: i,
     name: "default-branch-name-#{i}",

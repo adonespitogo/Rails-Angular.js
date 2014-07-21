@@ -1,5 +1,7 @@
 class RestoAdmin::MenuItemsController < RestoAdmin::BaseController
 
+  protect_from_forgery with: :null_session
+
   include CleanPagination
 
   layout false
@@ -15,6 +17,10 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseController
     paginate @menu_items.count, max_per_page do |limit, offset|
       @menu_items = @menu_items.limit(limit).offset(offset).order(:name)
     end
+  end
+
+  def create
+    
   end
 
 end

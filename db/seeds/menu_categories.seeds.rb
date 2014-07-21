@@ -1,6 +1,7 @@
 MenuCategory.delete_all
 
 5.times do |i|
+  i += 1
   MenuCategory.create(
     id: i,
     name: "default-category-#{i}",
