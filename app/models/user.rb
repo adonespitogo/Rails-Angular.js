@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
 
   # RELATIONSHIPS
   has_and_belongs_to_many :branch_groups,
-                            join_table: "admins_branch_groups"
+                            join_table: "admins_branch_groups",
+                            dependent: :destroy
 
   has_and_belongs_to_many :branches,
                             join_table: "branches_employees",
