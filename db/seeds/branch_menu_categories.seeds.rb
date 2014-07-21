@@ -5,12 +5,14 @@ BranchMenuCategory.all.each do |bmc|
 end
 
 5.times do |i|
+  i += 1
   bmc = BranchMenuCategory.create(
     id: i,
     menu_category_id: i,
     branch_id: i
   )
   50.times do |ii|
+    ii += 1
     bmc.menu_items << MenuItem.create(
       name: "default menu item name - #{ii*i}",
       slug: "default-menu-item-slug-#{ii*i}",
