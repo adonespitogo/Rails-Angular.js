@@ -9,8 +9,8 @@ gem "paperclip", "~> 4.1"
 gem 'geokit-rails'
 gem 'rabl'
 gem 'oj'
-gem 'will_paginate', '~> 3.0'
 gem "paranoia", "~> 2.0"
+gem 'clean_pagination'
 
 # Assets
 gem 'font-awesome-sass'

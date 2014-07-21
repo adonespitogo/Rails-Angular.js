@@ -5,6 +5,7 @@ app = angular.module('RestoAdminApp', [
   'ncy-angular-breadcrumb'
   'templates'
   'angularjs-dropdown-multiselect'
+  'begriffs.paginate-anything'
   # controllers
   'MainController'
   'DashboardController'

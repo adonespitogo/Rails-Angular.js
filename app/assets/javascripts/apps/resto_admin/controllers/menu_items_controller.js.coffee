@@ -30,8 +30,7 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
 ctrl.controller "MenuItemIndexCtrl",
   ($scope, $modal, MenuItem, Category) ->
 
-    MenuItem.getList().then (menu_items) ->
-        $scope.menu_items = menu_items
+    $scope.menu_items_url = "/resto_admin/menu_items"
 
     Category.getList().then (categories) ->
       $scope.categories = categories
@@ -51,12 +50,12 @@ ctrl.controller "MenuItemIndexCtrl",
 
     $scope.filterByCategory = (cat_id) ->
       $scope.categoryId = cat_id
-      MenuItem.getList({category_id: cat_id}).then (menu_items) ->
-          $scope.menu_items = menu_items
+      $scope.menu_items_url = "/resto_admin/menu_items?category_id=" + cat_id
+      console.log $scope.menu_items_url
+
     $scope.allMenuItems = ->
       $scope.categoryId = null
-      MenuItem.getList().then (menu_items) ->
-          $scope.menu_items = menu_items
+      $scope.menu_items_url = "/resto_admin/menu_items"
 
 ctrl.controller "NewMenuItemCtrl",
   ($scope, $modal) ->

@@ -21,4 +21,5 @@
 //= require angular-dropdown-multiselect
 //= require angular-ui-router
 //= require bootstrap/collapse
+//= require paginate-anything
 //= require_tree .
