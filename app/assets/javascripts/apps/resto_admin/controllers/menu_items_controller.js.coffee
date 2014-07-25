@@ -67,10 +67,13 @@ ctrl.controller "NewMenuItemCtrl",
     Category.getList().then (cats) ->
       $scope.categories = cats
 
+    $scope.item_options = []
+
     $scope.addMoreOptions = ->
       modal = $modal.open(
         templateUrl: 'menu_items/add_more_options.html'
         controller: 'AddMoreItemOptionsCtrl'
+        scope: $scope
       )
 
     $scope.item = {branches: [], categories: []}
@@ -92,5 +95,20 @@ ctrl.controller 'ItemQuickEditCtrl',
 ctrl.controller 'AddMoreItemOptionsCtrl',
   ($scope, $modalInstance) ->
 
+    $scope.new_item_options = []
+
+    $scope.addOneOption = ->
+      $scope.new_item_options = [{options:[]}]
+
+    $scope.addOptionOption = (opt) ->
+      $scope.option_option_name = ''
+      $scope.option_option_price = ''
+      $scope.new_item_options[0].options.push(opt)
+
     $scope.cancel =  ->
       $modalInstance.dismiss()
+
+    $scope.addOptions = ->
+      for i in $scope.new_item_options
+        $scope.item_options.push i
+      $scope.$close()

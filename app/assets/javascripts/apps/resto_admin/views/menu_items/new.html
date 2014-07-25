@@ -69,39 +69,17 @@
       <div class="col-xs-8">
         <h3>Item Options</h3>
         <ul class="list-group">
-          <li class="list-group-item">
+          <li class="list-group-item" ng-repeat="opt in item_options">
             <div class="row">
               <div class="col-xs-5">
               <p>
-                <b>Size</b>
+                <b>{{opt.name}}</b>
               </p>
-              <small><i>Customer selects 1 item</i></small>
+              <small><i>Customer selects {{opt.option_limit}} item</i></small>
               </div>
               <div class="col-xs-5">
                 <ul>
-                  <li>Regular <span class="label label-success pull-right">+20.00</span></li>
-                  <li>Medium <span class="label label-success pull-right">+40.00</span></li>
-                  <li>Large <span class="label label-success pull-right">+30.00</span></li>
-                </ul>
-              </div>
-              <div class="col-xs-2">
-                <span class="pointer pull-right fa fa-times"></span>
-                <span class="pointer pull-right fa fa-pencil" ng-click="newItemOption()"></span>
-              </div>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-xs-5">
-              <p>
-                <b>Cheese</b>
-              </p>
-              <small><i>Customer selects 1 item</i></small>
-              </div>
-              <div class="col-xs-5">
-                <ul>
-                  <li>With Cheese <span class="label label-success pull-right">+ 10.00</span></li>
-                  <li>Without Cheese <span class="label label-success pull-right">+ 0.00</span></li>
+                  <li ng-repeat="o in opt.options">{{o.name}} <span class="label label-success pull-right">+ {{o.price}}</span></li>
                 </ul>
               </div>
               <div class="col-xs-2">

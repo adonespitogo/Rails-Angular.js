@@ -48,33 +48,31 @@
               </div>
             </div>
         </tab>
-        <tab heading="Create new item option">
+        <tab heading="Create new item option" select="addOneOption()">
             <br>
             <form action="">
                 <div class="form-group">
                     <label for="">Option Name</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-model="new_item_options[0].name">
                 </div>
                 <div class="form-group">
                     <label for="">How many options a customer can choose ?</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-model="new_item_options[0].option_limit">
                 </div>
                 <div class="form-group">
                     <label for="">Description</label>
-                    <textarea name="" id="" cols="3" rows="3" class="form-control"></textarea>
+                    <textarea name="" cols="3" rows="3"
+                    class="form-control"
+                    ng-model="new_item_options[0].description">
+                    </textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Option Items</label>
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            With cheese
-                            <span class="label label-success">+ 2.00</span>
-                            <span class="fa fa-times pointer pull-right"></span>
-                        </li>
-                        <li class="list-group-item">
-                            With cheese
-                            <span class="label label-success">+ 2.00</span>
-                            <span class="fa fa-times pointer pull-right"></span>
+                        <li class="list-group-item" ng-repeat="option in new_item_options[0].options">
+                            {{option.name}}
+                            <span class="label label-success">+ {{option.price}}</span>
+                            <span class="fa fa-times pointer pull-right" ng-click="new_item_options[0].options.splice($index, 1)"></span>
                         </li>
                     </ul>
                     <ul class="list-group">
@@ -85,13 +83,13 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-xs-5">
-                                    <input type="text" class="form-control" placeholder="Name">
+                                    <input type="text" class="form-control" placeholder="Name" ng-model="option_option_name">
                                 </div>
                                 <div class="col-xs-5">
-                                    <input type="text" class="form-control" placeholder="Additional Price">
+                                    <input type="text" class="form-control" placeholder="Additional Price" ng-model="option_option_price">
                                 </div>
                                 <div class="col-xs-2">
-                                    <button class="btn btn-success">Add</button>
+                                    <button class="btn btn-success" ng-click="addOptionOption({name: option_option_name, price: option_option_price})">Add</button>
                                 </div>
                             </div>
                         </li>
@@ -103,6 +101,6 @@
     </tabset>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()"><span class="fa fa-plus"></span> Add Options</button>
+    <button class="btn btn-primary" ng-click="addOptions()"><span class="fa fa-plus"></span> Add Options</button>
     <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 </div>
