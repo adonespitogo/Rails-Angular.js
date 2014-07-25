@@ -4,11 +4,19 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
 
   $stateProvider
     .state('menu_items',
+      abstract: true
       url: '/menu-items'
+      template: '<div ui-view></div>'
+      data:
+        ncyBreadcrumbLabel: "Menu Items"
+    )
+    .state('menu_items.list',
+      url: '/list'
       controller: 'MenuItemIndexCtrl'
       templateUrl: 'menu_items/index.html'
       data:
         ncyBreadcrumbLabel: "Menu Items"
+        ncyBreadcrumbParent: "menu_items"
     )
     .state('menu_items.new',
       url: '/new'
@@ -16,10 +24,17 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
       templateUrl: 'menu_items/new.html'
       data:
         ncyBreadcrumbLabel: "Create"
+        ncyBreadcrumbParent: "menu_items.list"
     )
 
 ctrl.controller "MenuItemIndexCtrl",
-  ($scope, $modal) ->
+  ($scope, $modal, Category) ->
+
+    $scope.menu_items_url = "/resto_admin/menu_items"
+
+    Category.getList().then (categories) ->
+      $scope.categories = categories
+
 
     $scope.quickEdit = ->
       newItemModal = $modal.open(
@@ -33,23 +48,39 @@ ctrl.controller "MenuItemIndexCtrl",
         controller: 'NewCategoryCtrl'
       )
 
+    $scope.filterByCategory = (cat_id) ->
+      $scope.categoryId = cat_id
+      $scope.menu_items_url = "/resto_admin/menu_items?category_id=" + cat_id
+      console.log $scope.menu_items_url
+
+    $scope.allMenuItems = ->
+      $scope.categoryId = null
+      $scope.menu_items_url = "/resto_admin/menu_items"
+
 ctrl.controller "NewMenuItemCtrl",
-  ($scope, $modal) ->
-    $scope.selectedBanches = []
-    $scope.branches = [ {id: 1, name: "Branch 1"}, {id: 2, name: "Branch 2"}, {id: 3, name: "Branch 3"}]
-    $scope.branchesSelectSettings =
+  ($scope, $modal, Branch, Category, MenuItem) ->
+
+    Branch.getList().then (branches) ->
+      $scope.branches = branches
+    $scope.branchesSelectSettings = $scope.categoriesSelectSettings =
       displayProp: 'name'
-    $scope.categories = [
-      {id: 1, label: "Category 1"}
-      {id: 2, label: "Category 2"}
-    ]
-    $scope.selectedCategories = []
+
+    Category.getList().then (cats) ->
+      $scope.categories = cats
 
     $scope.addMoreOptions = ->
       modal = $modal.open(
         templateUrl: 'menu_items/add_more_options.html'
         controller: 'AddMoreItemOptionsCtrl'
       )
+
+    $scope.item = {branches: [], categories: []}
+
+    $scope.save = (active) ->
+      $scope.item.deleted_at = if active then null else new Date()
+      MenuItem.post($scope.item).then (item) ->
+        console.log item
+
 
 ctrl.controller 'ItemQuickEditCtrl',
   ($scope, $modalInstance) ->

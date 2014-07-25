@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
 
   # RELATIONSHIPS
   has_and_belongs_to_many :branch_groups,
-                            join_table: "admins_branch_groups"
+                            join_table: "admins_branch_groups",
+                            dependent: :destroy
 
   has_and_belongs_to_many :branches,
                             join_table: "branches_employees",
@@ -19,6 +20,6 @@ class User < ActiveRecord::Base
   has_many :activities, class_name: "UserActivity"
 
   def is_resto_admin?
-    self.role == "employee" || self.role == "resto_admin"
+    self.role == "resto_admin"
   end
 end

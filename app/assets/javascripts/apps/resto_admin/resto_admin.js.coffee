@@ -5,7 +5,8 @@ app = angular.module('RestoAdminApp', [
   'ncy-angular-breadcrumb'
   'templates'
   'angularjs-dropdown-multiselect'
-  # app modules
+  'begriffs.paginate-anything'
+  # controllers
   'MainController'
   'DashboardController'
   'RestaurantControllers'
@@ -14,8 +15,14 @@ app = angular.module('RestoAdminApp', [
   'BranchesControllers'
   'EmployeesControllers'
   'CategoriesControllers'
+  # services
+  'MenuItemServices'
+  'CategoryServices'
+  'BranchServices'
 ])
 
-app.config ($breadcrumbProvider) ->
+app.config ($breadcrumbProvider, RestangularProvider) ->
     $breadcrumbProvider.setOptions
       prefixStateName: 'dashboard'
+
+    RestangularProvider.setBaseUrl '/resto_admin'

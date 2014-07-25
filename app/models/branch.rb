@@ -13,4 +13,6 @@ class Branch < ActiveRecord::Base
 
   has_and_belongs_to_many :menu_categories
   has_many :orders
+  has_many :branch_menu_categories
+  has_many :menu_items, through: :branch_menu_categories
 end

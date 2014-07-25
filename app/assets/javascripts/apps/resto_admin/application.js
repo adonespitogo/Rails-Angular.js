@@ -16,8 +16,10 @@
 //= require angular-breadcrumb
 //= require angular-ui-bootstrap
 //= require angular-rails-templates
+//= require restangular
 //= require lodash
 //= require angular-dropdown-multiselect
 //= require angular-ui-router
 //= require bootstrap/collapse
+//= require paginate-anything
 //= require_tree .

@@ -1,4 +1,4 @@
-<div ui-view class="menu-items-page">
+<div class="menu-items-page">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
@@ -16,17 +16,12 @@
         </a>
         <h4><strong>Categories</strong></h4>
         <div class="list-group">
-          <a ui-sref="menu_items" class="list-group-item" ui-sref-active="active">
+          <a ui-sref="menu_items.list" class="list-group-item" ng-class="{'active': categoryId == null}" ng-click="allMenuItems()">
             All Items <span class="fa fa-chevron-right pull-right"></span>
           </a>
-          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Appetizers
-             <span class="fa fa-chevron-right pull-right"></span>
-          </a>
-          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Main Courses
-             <span class="fa fa-chevron-right pull-right"></span>
-          </a>
-          <a ui-sref="menu_items.appetizers" class="list-group-item" ui-sref-active="active">Burgers
-             <span class="fa fa-chevron-right pull-right"></span>
+          <a ng-repeat="c in categories" ng-click="filterByCategory(c.id)" class="list-group-item" ng-class="{'active': c.id == categoryId}">
+            {{c.name}}
+            <span class="fa fa-chevron-right pull-right"></span>
           </a>
         </div>
         <a class="btn btn-default btn-block" ng-click="newCategory()">
@@ -34,7 +29,7 @@
           Create New Category
         </a>
       </div>
-      <div class="col-xs-9">
+      <div class="col-xs-9" ui-view>
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
@@ -45,37 +40,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Item name goes here</td>
-              <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, dicta neque itaque nostrum excepturi eveniet, adipisci corrupti, eaque accusantium optio, autem fugiat perspiciatis facere. Quia vitae libero, exercitationem hic! Saepe.</td>
-              <td>200.00</td>
+            <tr ng-repeat="item in menu_items">
+              <td><b>{{item.name}}</b></td>
+              <td>{{item.description}}</td>
+              <td>{{item.price}}</td>
               <td class="text-center">
                 <div class="btn-group">
                   <a class="btn btn-primary btn-xs"><span class="fa fa-eye"></span></a>
-                  <a class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
-                  <a class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Item name goes here</td>
-              <td>Description goes here</td>
-              <td>200.00</td>
-              <td class="text-center">
-                <div class="btn-group">
-                  <a class="btn btn-primary btn-xs"><span class="fa fa-eye"></span></a>
-                  <a class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
-                  <a class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Item name goes here</td>
-              <td>Description goes here</td>
-              <td>200.00</td>
-              <td class="text-center">
-                <div class="btn-group">
-                  <a class="btn btn-primary btn-xs" ng-click="quickEdit()"><span class="fa fa-eye"></span></a>
                   <a class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
                   <a class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
                 </div>
@@ -83,18 +54,14 @@
             </tr>
           </tbody>
         </table>
+        <div class="text-center">
+          <begriffs.pagination
+            collection="menu_items"
+            url="menu_items_url"
+            template-url="paginate-anything/tpl.html">
+          </begriffs.pagination>
+        </div>
       </div>
-    </div>
-    <div class="text-center">
-      <ul class="pagination">
-        <li><a href="#">&laquo;</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">&raquo;</a></li>
-      </ul>
     </div>
   </div>
 </div>

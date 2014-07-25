@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     case resource.role
-    when "employee"
+    when "resto_admin"
       resto_admin_home_path
     end
   end
