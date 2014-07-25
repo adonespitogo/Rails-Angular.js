@@ -51,7 +51,6 @@ ctrl.controller "MenuItemIndexCtrl",
     $scope.filterByCategory = (cat_id) ->
       $scope.categoryId = cat_id
       $scope.menu_items_url = "/resto_admin/menu_items?category_id=" + cat_id
-      console.log $scope.menu_items_url
 
     $scope.allMenuItems = ->
       $scope.categoryId = null
@@ -60,10 +59,10 @@ ctrl.controller "MenuItemIndexCtrl",
 ctrl.controller "NewMenuItemCtrl",
   ($scope, $modal, Branch, Category, MenuItem) ->
 
+    $scope.branchesSelectSettings = $scope.categoriesSelectSettings = {displayProp: 'name'}
+
     Branch.getList().then (branches) ->
       $scope.branches = branches
-    $scope.branchesSelectSettings = $scope.categoriesSelectSettings =
-      displayProp: 'name'
 
     Category.getList().then (cats) ->
       $scope.categories = cats
@@ -78,8 +77,9 @@ ctrl.controller "NewMenuItemCtrl",
 
     $scope.save = (active) ->
       $scope.item.deleted_at = if active then null else new Date()
-      MenuItem.post($scope.item).then (item) ->
-        console.log item
+      menu_item = new MenuItem(menu_item: $scope.item)
+      menu_item.$save (item) ->
+        $scope.alerts = [{type: 'success', msg: 'Menu item saved.'}]
 
 
 ctrl.controller 'ItemQuickEditCtrl',
