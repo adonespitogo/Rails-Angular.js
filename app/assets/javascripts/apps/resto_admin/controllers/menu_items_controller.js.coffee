@@ -79,7 +79,8 @@ ctrl.controller "NewMenuItemCtrl",
       $scope.item.deleted_at = if active then null else new Date()
       menu_item = new MenuItem(menu_item: $scope.item)
       menu_item.$save (item) ->
-        $scope.alerts = [{type: 'success', msg: 'Menu item saved.'}]
+        console.log item
+        $scope.alerts.push {type: 'success', msg: 'Menu item saved.'}
 
 
 ctrl.controller 'ItemQuickEditCtrl',
