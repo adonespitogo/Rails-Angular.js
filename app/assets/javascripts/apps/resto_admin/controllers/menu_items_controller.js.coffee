@@ -80,9 +80,9 @@ ctrl.controller "NewMenuItemCtrl",
 
     $scope.save = (active) ->
       $scope.item.deleted_at = if active then null else new Date()
+      $scope.item.item_options = $scope.item_options
       menu_item = new MenuItem(menu_item: $scope.item)
       menu_item.$save (item) ->
-        console.log item
         $scope.alerts.push {type: 'success', msg: 'Menu item saved.'}
 
 
@@ -94,6 +94,9 @@ ctrl.controller 'ItemQuickEditCtrl',
 
 ctrl.controller 'AddMoreItemOptionsCtrl',
   ($scope, $modalInstance) ->
+
+    $scope.option_option_name = ''
+    $scope.option_option_price = ''
 
     $scope.new_item_options = []
 

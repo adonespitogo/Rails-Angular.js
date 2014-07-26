@@ -4,6 +4,7 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseController
 
   protect_from_forgery with: :null_session
   skip_before_filter :verify_authenticity_token
+  before_action :build_options, only: [:create, :update]
 
   layout false
   respond_to :json
@@ -24,6 +25,8 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseController
   def create
       @item = MenuItem.new(item_params)
       @item.branch_menu_categories = branch_menu_categories
+      @item.item_options = @item_options
+      @item.save
       render :show
   end
 
@@ -58,6 +61,29 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseController
 
     def menu_category_ids
       (params[:menu_item][:categories]  || []).map { |e| e[:id]  }
+    end
+
+    def build_options
+      @item_options = []
+      item_options_params.each do |item_option_params|
+        item_option = ItemOption.new(
+          name: item_option_params[:name],
+          description: item_option_params[:description],
+          option_limit: item_option_params[:option_limit]
+        )
+        item_option_params[:options].each do |option|
+          item_option_option = ItemOptionOption.new
+          item_option_option.name = option[:name]
+          item_option_option.price = option[:price]
+          item_option.options << item_option_option
+        end
+        @item_options << item_option
+      end
+      @item_options
+    end
+
+    def item_options_params
+      params[:menu_item][:item_options]
     end
 
 end
