@@ -13,7 +13,7 @@ class RestoAdmin::MenuCategoriesController < RestoAdmin::BaseController
   def create
     @category = MenuCategory.create(category_params)
     @branch_group.branches.each do |branch|
-      BranchMenuCategory.create(branch_id: branch.id, menu_category_id: @category.id)
+      branch.branch_menu_categories << BranchMenuCategory.create(branch_id: branch.id, menu_category_id: @category.id)
     end
     render :show
   end
