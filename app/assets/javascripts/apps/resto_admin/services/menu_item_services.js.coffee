@@ -1,4 +1,4 @@
-srv = angular.module 'MenuItemServices', ['ngResource']
+srv = angular.module 'MenuItemServices', ['restangular']
 
-srv.factory 'MenuItem', ($resource) ->
-  $resource('menu_items/:id', {id: '@id'})
+srv.factory 'MenuItem', (Restangular) ->
+  Restangular.all('menu_items')
