@@ -83,7 +83,7 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseController
     end
 
     def item_options_params
-      params[:menu_item][:item_options]
+      params[:menu_item][:item_options] || []
     end
 
 end
