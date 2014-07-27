@@ -5,23 +5,23 @@
   <form action="">
     <div class="form-group">
       <label for="">Category Name</label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" ng-model="category.name">
     </div>
     <div class="form-group">
       <label for="">Slug</label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" ng-model="category.slug">
     </div>
     <div class="form-group">
       <label for="">Meta Keywords</label>
-      <textarea name="" id="" cols="30" rows="3" class="form-control"></textarea>
+      <textarea name="" id="" cols="30" rows="3" class="form-control" ng-model="category.meta_keywords"></textarea>
     </div>
     <div class="form-group">
       <label for="">Meta Description</label>
-      <textarea name="" id="" cols="30" rows="5" class="form-control"></textarea>
+      <textarea name="" id="" cols="30" rows="5" class="form-control" ng-model="category.meta_description"></textarea>
     </div>
   </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()">Create Category</button>
-    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" ng-click="postCategory()">Create Category</button>
+    <button class="btn btn-warning" ng-click="$close()">Cancel</button>
 </div>

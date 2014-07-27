@@ -45,7 +45,8 @@ ctrl.controller "MenuItemIndexCtrl",
     $scope.newCategory = ->
       modal = $modal.open(
         templateUrl: 'categories/new.html'
-        controller: 'NewCategoryCtrl'
+        controller: 'NewCategoryCtrl',
+        scope: $scope
       )
 
     $scope.filterByCategory = (cat_id) ->
