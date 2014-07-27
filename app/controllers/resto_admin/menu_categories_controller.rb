@@ -11,8 +11,7 @@ class RestoAdmin::MenuCategoriesController < RestoAdmin::BaseController
   end
 
   def create
-    @category = MenuCategory.new(category_params)
-    @category.save
+    @category = MenuCategory.create(category_params)
     @branch_group.branches.each do |branch|
       BranchMenuCategory.create(branch_id: branch.id, menu_category_id: @category.id)
     end
