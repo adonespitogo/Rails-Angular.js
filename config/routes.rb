@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'item_options/index'
+
   get 'public/index'
   root to: "public#index"
 
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   namespace :resto_admin do
     get '/', to: 'home#index', as: 'home'
     resources :menu_items
+    resources :item_options
     resources :menu_categories
     resources :branches
   end

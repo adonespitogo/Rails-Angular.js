@@ -93,7 +93,10 @@ ctrl.controller 'ItemQuickEditCtrl',
       $modalInstance.dismiss()
 
 ctrl.controller 'AddMoreItemOptionsCtrl',
-  ($scope, $modalInstance) ->
+  ($scope, $modalInstance, ItemOption, $filter) ->
+
+    ItemOption.getList().then (item_options) ->
+      $scope.item_options_for_select = item_options
 
     $scope.option_option_name = ''
     $scope.option_option_price = ''
