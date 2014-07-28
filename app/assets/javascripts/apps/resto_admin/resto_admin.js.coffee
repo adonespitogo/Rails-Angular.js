@@ -6,6 +6,7 @@ app = angular.module('RestoAdminApp', [
   'templates'
   'angularjs-dropdown-multiselect'
   'begriffs.paginate-anything'
+  'angular-loading-bar'
   # controllers
   'MainController'
   'DashboardController'

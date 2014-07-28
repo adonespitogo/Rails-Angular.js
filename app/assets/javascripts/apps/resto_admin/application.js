@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular
+//= require angular-loading-bar
 //= require angular-resource
 //= require angular-breadcrumb
 //= require angular-ui-bootstrap
