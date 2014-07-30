@@ -11,14 +11,14 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
         ncyBreadcrumbLabel: "Branches"
     )
     .state('branches.show',
-      url: '/details'
+      url: '/details/:id'
       controller: 'BranchesShowCtrl'
       templateUrl: 'branches/show.html'
       data:
         ncyBreadcrumbLabel: "Branch Information"
     )
     .state('branches.edit',
-      url: '/edit'
+      url: '/edit/:id'
       controller: 'BranchesEditCtrl'
       templateUrl: 'branches/edit.html'
       data:
@@ -36,9 +36,14 @@ ctrl.controller "BranchesIndexCtrl", ($scope, Branch) ->
   Branch.getList().then (branches) ->
     $scope.branches = branches
 
-ctrl.controller "BranchesShowCtrl", ($scope) ->
+ctrl.controller "BranchesShowCtrl", ($scope, $stateParams, Restangular) ->
+  Restangular.one('branches', $stateParams.id).get().then (b) ->
+    $scope.branch = b
 
-ctrl.controller "BranchesEditCtrl", ($scope, $modal) ->
+ctrl.controller "BranchesEditCtrl", ($scope, $modal, Restangular, $stateParams) ->
+
+  Restangular.one('branches', $stateParams.id).get().then (b) ->
+    $scope.branch = b
 
   $scope.addDeliveryZone = ->
     modal = $modal.open

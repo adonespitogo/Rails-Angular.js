@@ -13,6 +13,10 @@ class RestoAdmin::BranchesController < RestoAdmin::BaseController
     render :show
   end
 
+  def show
+    @branch = Branch.find(params[:id])
+  end
+
   private
     def branch_params
       params.require(:branch).permit(:name, :slug, :address, :phone_number, :working_hour_start,
