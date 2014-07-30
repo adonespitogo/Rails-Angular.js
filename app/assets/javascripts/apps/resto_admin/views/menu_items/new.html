@@ -1,3 +1,8 @@
+
+
+
+
+<!-- <form role="form" ng-upload="uploadComplete(content)" action="/resto_admin/menu_items"> -->
 <form role="form">
   <div class="container">
     <div class="row">
@@ -39,13 +44,24 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-xs-12">
             <div class="form-group">
               <label for="exampleInputFile">Product Photo</label>
-              <input type="file" id="exampleInputFile">
+              <input type="file" id="exampleInputFile" name="file">
               <p class="help-block">Select product photo.</p>
             </div>
+          </div>
+        </div> -->
+        <div class="row">
+          <div class="col-xs-12">
+
+            <input type="file" id="fileUpload" ng-show="false" upload-image/>
+            <img ng-src="{{userImageLink}}" ng-click="openFileWindow()" ng-class="{ hidden: !userImageLink}" >
+            <div class="drop-box" ng-click="openFileWindow()" ng-class=" {hidden: userImageLink}">
+                Click to add an image.
+            </div>
+
           </div>
         </div>
       </div>
@@ -91,7 +107,7 @@
         <a ng-click="addMoreOptions()" class="btn btn-default"><span class="fa fa-plus"></span> Add More Options</a>
       </div>
       <div class="col-xs-4">
-        <button class="btn btn-success btn-block" ng-click="save(true)">Save and Publish</button>
+        <button class="btn btn-success btn-block" ng-click="save(true)" upload-submit>Save and Publish</button>
         <button class="btn btn-default btn-block" ng-click="save(false)">Save but Don't Publish</button>
       </div>
     </div>

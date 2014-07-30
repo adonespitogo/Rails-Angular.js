@@ -59,6 +59,7 @@ ctrl.controller "MenuItemIndexCtrl",
 
 ctrl.controller "NewMenuItemCtrl",
   ($scope, $modal, Branch, Category, MenuItem) ->
+    $scope.user = {}
 
     $scope.branchesSelectSettings = $scope.categoriesSelectSettings = {displayProp: 'name'}
 
@@ -84,6 +85,13 @@ ctrl.controller "NewMenuItemCtrl",
       $scope.item.item_options = $scope.item_options
       MenuItem.post(menu_item: $scope.item).then (item) ->
         $scope.alerts.push {type: 'success', msg: 'Menu item saved.'}
+
+    $scope.uploadComplete = (content) ->
+      console.log content
+
+    # // triggers click event for input file, causing the file selection window to open
+    $scope.openFileWindow = ->
+      angular.element( document.querySelector( '#fileUpload' ) ).trigger('click');
 
 
 ctrl.controller 'ItemQuickEditCtrl',
