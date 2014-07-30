@@ -45,10 +45,14 @@ ctrl.controller "BranchesEditCtrl", ($scope, $modal) ->
 
 ctrl.controller "BranchesAddDeliveryZoneCtrl", ($scope, $modalInstance) ->
 
-ctrl.controller "BranchesNewCtrl", ($scope, $modal) ->
+ctrl.controller "BranchesNewCtrl", ($scope, $modal, Branch) ->
   $scope.addDeliveryZone = ->
     modal = $modal.open
               templateUrl: 'branches/add_delivery_zone.html'
               controller: 'BranchesAddDeliveryZoneCtrl'
+
+  $scope.saveBranch = (branch) ->
+    Branch.post({branch: branch}).then (branch) ->
+      $scope.alerts.push {type: 'success', msg: 'Branch added successfully.'}
 
 
