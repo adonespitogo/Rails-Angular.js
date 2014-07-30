@@ -32,7 +32,9 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
         ncyBreadcrumbLabel: "Create New"
     )
 
-ctrl.controller "BranchesIndexCtrl", ($scope) ->
+ctrl.controller "BranchesIndexCtrl", ($scope, Branch) ->
+  Branch.getList().then (branches) ->
+    $scope.branches = branches
 
 ctrl.controller "BranchesShowCtrl", ($scope) ->
 
