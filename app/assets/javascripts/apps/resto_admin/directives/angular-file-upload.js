@@ -14,7 +14,7 @@ return {
     // scope.uploadImage(scope.item.imagePath);
     // updates scope
     // scope.$apply();
-    console.log(scope.item)
+    
   };
 
   // listens on change event

@@ -57,8 +57,8 @@
           <div class="col-xs-12">
 
             <input type="file" id="fileUpload" ng-show="false" upload-image/>
-            <img ng-src="{{userImageLink}}" ng-click="openFileWindow()" ng-class="{ hidden: !userImageLink}" >
-            <div class="drop-box" ng-click="openFileWindow()" ng-class=" {hidden: userImageLink}">
+            <img ng-src="{{item.image}}" ng-click="openFileWindow()" ng-class="{ hidden: !item.image}" >
+            <div class="btn btn-default" ng-click="openFileWindow()" ng-class=" {hidden: item.image}">
                 Click to add an image.
             </div>
 
@@ -107,7 +107,7 @@
         <a ng-click="addMoreOptions()" class="btn btn-default"><span class="fa fa-plus"></span> Add More Options</a>
       </div>
       <div class="col-xs-4">
-        <button class="btn btn-success btn-block" ng-click="save(true)" upload-submit>Save and Publish</button>
+        <button class="btn btn-success btn-block" ng-click="save(true)">Save and Publish</button>
         <button class="btn btn-default btn-block" ng-click="save(false)">Save but Don't Publish</button>
       </div>
     </div>

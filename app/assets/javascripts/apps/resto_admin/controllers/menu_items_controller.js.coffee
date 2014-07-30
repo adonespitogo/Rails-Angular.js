@@ -84,6 +84,7 @@ ctrl.controller "NewMenuItemCtrl",
       $scope.item.deleted_at = if active then null else new Date()
       $scope.item.item_options = $scope.item_options
       MenuItem.post(menu_item: $scope.item).then (item) ->
+        $scope.item = item
         $scope.alerts.push {type: 'success', msg: 'Menu item saved.'}
 
     $scope.uploadComplete = (content) ->
