@@ -31,6 +31,10 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseController
       render :show
   end
 
+  def show
+    @item = MenuItem.find(params[:id])
+  end
+
   private
     def branch_menu_categories
       branch_menu_categories = []
