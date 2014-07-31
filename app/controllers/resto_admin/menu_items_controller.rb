@@ -44,6 +44,11 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseController
     @item = MenuItem.find(params[:id])
   end
 
+  def destroy
+    MenuItem.find(params[:id]).delete
+    render nothing: true, status: 204
+  end
+
   private
     def branch_menu_categories
       branch_menu_categories = []

@@ -29,7 +29,7 @@
           Create New Category
         </a>
       </div>
-      <div class="col-xs-9" ui-view>
+      <div class="col-xs-9">
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
@@ -48,7 +48,7 @@
                 <div class="btn-group">
                   <a class="btn btn-primary btn-xs"><span class="fa fa-eye"></span></a>
                   <a class="btn btn-success btn-xs" ui-sref="menu_items.edit({id: item.id})"><span class="fa fa-pencil"></span></a>
-                  <a class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
+                  <a class="btn btn-danger btn-xs" ng-click="deleteItem(item, $index)"><span class="fa fa-trash-o"></span></a>
                 </div>
               </td>
             </tr>

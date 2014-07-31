@@ -36,7 +36,9 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
     )
 
 ctrl.controller "MenuItemIndexCtrl",
-  ($scope, $modal, Category) ->
+  ($scope, $modal, Category, Restangular) ->
+
+    $scope.menu_items = []
 
     $scope.menu_items_url = "/resto_admin/menu_items"
 
@@ -64,6 +66,12 @@ ctrl.controller "MenuItemIndexCtrl",
     $scope.allMenuItems = ->
       $scope.categoryId = null
       $scope.menu_items_url = "/resto_admin/menu_items"
+
+    $scope.deleteItem = (item, index) ->
+      if confirm "Are you sure you want to delete this menu item?"
+        Restangular.one('menu_items', item.id).remove().then ->
+          $scope.menu_items.splice(index, 1)
+          $scope.alerts.push type: 'success', msg: 'Menu Item deleted successfully.'
 
 ctrl.controller "NewMenuItemCtrl",
   ($scope, $modal, Branch, Category, MenuItem) ->
