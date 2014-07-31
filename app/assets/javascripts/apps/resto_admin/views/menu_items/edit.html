@@ -1,0 +1,115 @@
+
+
+
+
+<!-- <form role="form" ng-upload="uploadComplete(content)" action="/resto_admin/menu_items"> -->
+<form role="form">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="page-title">
+          <h1>Edit Menu Item</h1>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-8">
+        <div class="form-group">
+          <label for="">Name</label>
+          <input type="text" class="form-control" placeholder="Menu Item Name" ng-model="item.name">
+        </div>
+        <div class="form-group">
+          <label for="">Description</label>
+          <textarea class="form-control" cols="30" rows="10" placeholder="Description" ng-model="item.description"></textarea>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="">Price</label>
+              <input type="text" class="form-control" placeholder="Price" ng-model="item.price">
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label for="">Branches</label>
+              <div ng-dropdown-multiselect="" options="branches" selected-model="item.branches" extra-settings="branchesSelectSettings"></div>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label for="">Categories </label>
+              <div ng-dropdown-multiselect="" options="categories" selected-model="item.categories" extra-settings="categoriesSelectSettings"></div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="exampleInputFile">Product Photo</label>
+              <input type="file" id="exampleInputFile" name="file">
+              <p class="help-block">Select product photo.</p>
+            </div>
+          </div>
+        </div> -->
+        <div class="row">
+          <div class="col-xs-12">
+
+            <input type="file" id="fileUpload" ng-show="false" upload-image/>
+            <img ng-src="{{item.image}}" ng-click="openFileWindow()" ng-class="{ hidden: !item.image}" >
+            <div class="btn btn-default" ng-click="openFileWindow()" ng-class=" {hidden: item.image}">
+                Click to add an image.
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <h2>Publishing and Related Details</h2>
+        <div class="form-group">
+          <label for="">Slug</label>
+          <input type="text" class="form-control" placeholder="Slug" ng-model="item.slug">
+        </div>
+        <div class="form-group">
+          <label for="">Meta Tags</label>
+          <textarea cols="30" rows="3" class="form-control" placeholder="Meta Tags" ng-model="item.meta_tags"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="">Meta Description</label>
+          <textarea cols="30" rows="5" class="form-control" placeholder="Meta Description" ng-model="item.meta_description"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-8">
+        <h3>Item Options</h3>
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="opt in item_options">
+            <div class="row">
+              <div class="col-xs-5">
+              <p>
+                <b>{{opt.name}}</b>
+              </p>
+              <small><i>Customer selects {{opt.option_limit}} item</i></small>
+              </div>
+              <div class="col-xs-5">
+                <ul>
+                  <li ng-repeat="o in opt.options">{{o.name}} <span class="label label-success pull-right">+ {{o.price}}</span></li>
+                </ul>
+              </div>
+              <div class="col-xs-2">
+                <span class="pointer pull-right fa fa-times" ng-click="item_options.splice($index, 1)"></span>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <a ng-click="addMoreOptions()" class="btn btn-default"><span class="fa fa-plus"></span> Add More Options</a>
+      </div>
+      <div class="col-xs-4">
+        <button class="btn btn-success btn-block" ng-click="save(true)">Save and Publish</button>
+        <button class="btn btn-default btn-block" ng-click="save(false)">Save but Don't Publish</button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -26,6 +26,14 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
         ncyBreadcrumbLabel: "Create"
         ncyBreadcrumbParent: "menu_items.list"
     )
+    .state('menu_items.edit',
+      url: '/edit/:id'
+      controller: 'EditMenuItemCtrl'
+      templateUrl: 'menu_items/edit.html'
+      data:
+        ncyBreadcrumbLabel: "Edit"
+        ncyBreadcrumbParent: "menu_items.list"
+    )
 
 ctrl.controller "MenuItemIndexCtrl",
   ($scope, $modal, Category) ->
@@ -83,7 +91,46 @@ ctrl.controller "NewMenuItemCtrl",
     $scope.save = (active) ->
       $scope.item.deleted_at = if active then null else new Date()
       $scope.item.item_options = $scope.item_options
-      MenuItem.post(menu_item: $scope.item).then (item) ->
+      MenuItem.post($scope.item).then (item) ->
+        $scope.item = item
+        $scope.alerts.push {type: 'success', msg: 'Menu item saved.'}
+
+    $scope.uploadComplete = (content) ->
+      console.log content
+
+    # // triggers click event for input file, causing the file selection window to open
+    $scope.openFileWindow = ->
+      angular.element( document.querySelector( '#fileUpload' ) ).trigger('click');
+
+ctrl.controller "EditMenuItemCtrl",
+  ($scope, $modal, Branch, Category, Restangular, $stateParams, MenuItem) ->
+
+    Restangular.one('menu_items', $stateParams.id).get().then (item) ->
+      $scope.item = item
+
+    $scope.branchesSelectSettings = $scope.categoriesSelectSettings = {displayProp: 'name'}
+
+    Branch.getList().then (branches) ->
+      $scope.branches = branches
+
+    Category.getList().then (cats) ->
+      $scope.categories = cats
+
+    $scope.item_options = []
+
+    $scope.addMoreOptions = ->
+      modal = $modal.open(
+        templateUrl: 'menu_items/add_more_options.html'
+        controller: 'AddMoreItemOptionsCtrl'
+        scope: $scope
+      )
+
+    $scope.item = {branches: [], categories: []}
+
+    $scope.save = (active) ->
+      $scope.item.deleted_at = if active then null else new Date()
+      $scope.item.item_options = $scope.item_options
+      $scope.item.put().then (item)->
         $scope.item = item
         $scope.alerts.push {type: 'success', msg: 'Menu item saved.'}
 
