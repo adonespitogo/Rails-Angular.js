@@ -33,30 +33,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Branch 1</td>
-              <td>Hellw World, Cebu City</td>
-              <td>12345689</td>
-              <td>10am - 8pm</td>
-              <td>10am - 8pm</td>
+            <tr ng-repeat="branch in branches">
+              <td>{{branch.name}}</td>
+              <td>{{branch.address}}</td>
+              <td>{{branch.phone_number}}</td>
+              <td>(to be formatted)</td>
+              <td>(to be formatted)</td>
               <td>
                 <div class="btn-group">
-                  <a ui-sref="branches.show" class="btn btn-primary btn-xs"><span class="fa fa-eye"></span></a>
-                  <a ui-sref="branches.edit" class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
-                  <a href="" class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Branch 1</td>
-              <td>Hellw World, Cebu City</td>
-              <td>12345689</td>
-              <td>10am - 8pm</td>
-              <td>10am - 8pm</td>
-              <td>
-                <div class="btn-group">
-                  <a ui-sref="branches.show" class="btn btn-primary btn-xs"><span class="fa fa-eye"></span></a>
-                  <a ui-sref="branches.edit" class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
+                  <a ui-sref="branches.show({id: branch.id})" class="btn btn-primary btn-xs"><span class="fa fa-eye"></span></a>
+                  <a ui-sref="branches.edit({id: branch.id})" class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
                   <a href="" class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
                 </div>
               </td>

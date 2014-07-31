@@ -30,19 +30,19 @@
             <li class="list-group-item">
               <div class="row">
                 <div class="col-xs-4"><b>Name:</b></div>
-                <div class="col-xs-8">Branch 1</div>
+                <div class="col-xs-8">{{branch.name}}</div>
               </div>
             </li>
             <li class="list-group-item">
               <div class="row">
                 <div class="col-xs-4"><b>Address:</b></div>
-                <div class="col-xs-8">Talamban, Cebu City</div>
+                <div class="col-xs-8">{{branch.address}}</div>
               </div>
             </li>
             <li class="list-group-item">
               <div class="row">
                 <div class="col-xs-4"><b>Cotact No:</b></div>
-                <div class="col-xs-8">12346789</div>
+                <div class="col-xs-8">{{branch.phone_number}}</div>
               </div>
             </li>
             <li class="list-group-item">
@@ -95,15 +95,13 @@
         </div>
         <div class="panel-body">
           <b>Slug: </b>
-          branch-1
+          {{branch.slug}}
           <hr>
           <b>Meta Keywords:</b>
-          <span class="label label-default">keyword</span>
-          <span class="label label-default">keyword</span>
-          <span class="label label-default">keyword</span>
+          <span class="label label-default" ng-repeat="keyword in branch.meta_keywords.split(',')">{{keyword}}</span>
           <hr>
           <b>Meta Description:</b>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolore, nihil nobis labore eos debitis! Quos commodi consequatur officiis alias deserunt voluptate perferendis amet, possimus voluptates repellat et cupiditate aut!
+          {{branch.meta_description}}
         </div>
       </div>
 
