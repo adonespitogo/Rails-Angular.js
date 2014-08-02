@@ -7,8 +7,8 @@ app = angular.module('RestoAdminApp', [
   'angularjs-dropdown-multiselect'
   'begriffs.paginate-anything'
   'angular-loading-bar'
-  'ngUpload'
-  'uploadFile'
+  'uploadFile',
+  'ngAutocomplete'
   # controllers
   'MainController'
   'DashboardController'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140802172811) do
+ActiveRecord::Schema.define(version: 20140802181533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,15 @@ ActiveRecord::Schema.define(version: 20140802172811) do
 
   create_table "branch_delivery_zones", force: true do |t|
     t.integer  "branch_id"
-    t.integer  "zone_id"
     t.decimal  "delivery_charge"
     t.string   "delivery_charge_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "radius"
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.string   "address"
+    t.integer  "country_id"
   end
 
   create_table "branch_groups", force: true do |t|

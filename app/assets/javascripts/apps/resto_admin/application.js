@@ -14,11 +14,11 @@
 //= require jquery_ujs
 //= require angular
 //= require angular-loading-bar
-//= require ng-upload
 //= require angular-resource
 //= require angular-breadcrumb
 //= require angular-ui-bootstrap
 //= require angular-rails-templates
+//= require ng-autocomplete
 //= require restangular
 //= require lodash
 //= require angular-dropdown-multiselect

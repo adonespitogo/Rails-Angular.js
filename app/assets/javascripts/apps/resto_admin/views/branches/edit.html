@@ -82,7 +82,28 @@
           </ul>
         </div>
         <div class="form-group">
-          <a class="btn btn-default" ng-click="addDeliveryZone()"><span class="span fa fa-plus"></span> Add Delivery Zone</a>
+          <label for="">Add Delivery Zone</label>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search place" ng-autocomplete ng-model="address" details="data">
+            <div class="input-group-addon"><span class="fa fa-search"></span></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Charge Type:</label>
+          <select name="" id="" class="form-control">
+            <option value="percentage">Percentage</option>
+            <option value="amount">Fixed Amount</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="">Charge:</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <a class="btn btn-default" ng-click="addDeliveryZone()">
+            <span class="fa fa-plus"></span>
+            Add Delivery Zone
+          </a>
         </div>
       </div>
       <div class="col-xs-4">
