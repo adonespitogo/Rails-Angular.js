@@ -1,13 +1,8 @@
-class RestoAdmin::MenuItemsController < RestoAdmin::BaseController
+class RestoAdmin::MenuItemsController < RestoAdmin::BaseApiController
 
   include CleanPagination
 
-  protect_from_forgery with: :null_session
-  skip_before_filter :verify_authenticity_token
   before_action :build_options, only: [:create, :update]
-
-  layout false
-  respond_to :json
 
   def index
     @menu_items =  if params[:category_id]
@@ -33,7 +28,7 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseController
 
   def update
       @item = MenuItem.find(params[:id])
-      @item.image = decode_image
+      @item.image = decode_image if decode_image
       @item.branch_menu_categories = branch_menu_categories
       @item.item_options = @item_options
       @item.save
@@ -90,7 +85,7 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseController
           description: item_option_params[:description],
           option_limit: item_option_params[:option_limit]
         )
-        item_option_params[:options].each do |option|
+        (item_option_params[:options]||[]).each do |option|
           item_option_option = ItemOptionOption.new
           item_option_option.name = option[:name]
           item_option_option.price = option[:price]
@@ -107,21 +102,25 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseController
 
     def decode_image
       # decode base64 string
-      Rails.logger.info 'decoding now'
-      decoded_data = Base64.decode64(params[:imageData]) # json parameter set in directive scope
-      # create 'file' understandable by Paperclip
-      data = StringIO.new(decoded_data)
-      data.class_eval do
-        attr_accessor :content_type, :original_filename
+      if params[:imageData] && params[:imageContent] && params[:imagePath]
+        Rails.logger.info 'decoding now'
+        decoded_data = Base64.decode64(params[:imageData]) # json parameter set in directive scope
+        # create 'file' understandable by Paperclip
+        data = StringIO.new(decoded_data)
+        data.class_eval do
+          attr_accessor :content_type, :original_filename
+        end
+
+        # set file properties
+        data.content_type = params[:imageContent] # json parameter set in directive scope
+        data.original_filename = params[:imagePath] # json parameter set in directive scope
+
+        # update hash, I had to set @up to persist the hash so I can pass it for saving
+        # since set_params returns a new hash everytime it is called (and must be used to explicitly list which params are allowed otherwise it throws an exception)
+        data # user Icon is the model attribute that i defined as an attachment using paperclip generator
+      else
+        nil
       end
-
-      # set file properties
-      data.content_type = params[:imageContent] # json parameter set in directive scope
-      data.original_filename = params[:imagePath] # json parameter set in directive scope
-
-      # update hash, I had to set @up to persist the hash so I can pass it for saving
-      # since set_params returns a new hash everytime it is called (and must be used to explicitly list which params are allowed otherwise it throws an exception)
-      data # user Icon is the model attribute that i defined as an attachment using paperclip generator
     end
 
 end
