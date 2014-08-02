@@ -13,6 +13,12 @@ class RestoAdmin::BranchesController < RestoAdmin::BaseController
     render :show
   end
 
+  def update
+    @branch = Branch.find(params[:id])
+    @branch.update(branch_params)
+    render :show
+  end
+
   def show
     @branch = Branch.find(params[:id])
   end

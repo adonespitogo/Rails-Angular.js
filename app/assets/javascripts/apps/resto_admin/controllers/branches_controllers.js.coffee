@@ -50,6 +50,10 @@ ctrl.controller "BranchesEditCtrl", ($scope, $modal, Restangular, $stateParams) 
               templateUrl: 'branches/add_delivery_zone.html'
               controller: 'BranchesAddDeliveryZoneCtrl'
 
+  $scope.saveBranch = (branch) ->
+    $scope.branch.put().then (branch) ->
+      $scope.alerts.push {type: 'success', msg: 'Branch added successfully.'}
+
 ctrl.controller "BranchesAddDeliveryZoneCtrl", ($scope, $modalInstance) ->
 
 ctrl.controller "BranchesNewCtrl", ($scope, $modal, Branch) ->

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140719080421) do
+ActiveRecord::Schema.define(version: 20140802172811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,13 +75,13 @@ ActiveRecord::Schema.define(version: 20140719080421) do
     t.string   "name"
     t.string   "address"
     t.string   "phone_number"
-    t.time     "working_hour_start"
-    t.time     "working_hour_end"
+    t.string   "working_hour_start"
+    t.string   "working_hour_end"
     t.float    "lat"
     t.float    "lng"
     t.decimal  "minimum_order_amount", precision: 10, scale: 2
-    t.time     "delivery_hour_start"
-    t.time     "delivery_hour_end"
+    t.string   "delivery_hour_start"
+    t.string   "delivery_hour_end"
     t.string   "meta_keywords"
     t.string   "meta_description"
     t.datetime "created_at"
