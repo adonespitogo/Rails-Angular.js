@@ -115,6 +115,7 @@ ctrl.controller "EditMenuItemCtrl",
 
     Restangular.one('menu_items', $stateParams.id).get().then (item) ->
       $scope.item = item
+      $scope.item_options = item.item_options
 
     $scope.branchesSelectSettings = $scope.categoriesSelectSettings = {displayProp: 'name'}
 
@@ -140,6 +141,7 @@ ctrl.controller "EditMenuItemCtrl",
       $scope.item.item_options = $scope.item_options
       $scope.item.put().then (item)->
         $scope.item = item
+        $scope.item_options = item.item_options
         $scope.alerts.push {type: 'success', msg: 'Menu item saved.'}
 
     $scope.uploadComplete = (content) ->
