@@ -42,11 +42,23 @@ ctrl.controller "BranchesShowCtrl", ($scope, $stateParams, Restangular) ->
 
 ctrl.controller "BranchesEditCtrl", ($scope, Restangular, $stateParams) ->
 
+  $scope.chuva = 'initial value'
+
   Restangular.one('branches', $stateParams.id).get().then (b) ->
     $scope.branch = b
 
   $scope.addDeliveryZone = ->
-    # delivery_zone = 
+
+    zone = {
+      address: $scope.address,
+      delivery_charge: $scope.delivery_charge,
+      delivery_charge_type: $scope.delivery_charge_type,
+      radius: $scope.radius,
+      lat: $scope.data.geometry.location.k,
+      lng: $scope.data.geometry.location.B
+    }
+
+    $scope.branch.branch_delivery_zones.push zone
 
   $scope.saveBranch = (branch) ->
     $scope.branch.put().then (branch) ->
