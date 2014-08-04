@@ -39,6 +39,7 @@ ctrl.controller "BranchesIndexCtrl", ($scope, Branch) ->
 ctrl.controller "BranchesShowCtrl", ($scope, $stateParams, Restangular) ->
   Restangular.one('branches', $stateParams.id).get().then (b) ->
     $scope.branch = b
+    console.log b
 
 ctrl.controller "BranchesEditCtrl", ($scope, Restangular, $stateParams) ->
 
