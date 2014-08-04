@@ -33,8 +33,8 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
     )
 
 ctrl.controller "BranchesIndexCtrl", ($scope, Branch) ->
-  Branch.getList().then (branches) ->
-    $scope.branches = branches
+
+  $scope.branches_url = '/resto_admin/branches'
 
 ctrl.controller "BranchesShowCtrl", ($scope, $stateParams, Restangular) ->
   Restangular.one('branches', $stateParams.id).get().then (b) ->
@@ -65,7 +65,7 @@ ctrl.controller "BranchesEditCtrl", ($scope, Restangular, $stateParams) ->
       $scope.alerts.push {type: 'success', msg: 'Branch added successfully.'}
 
 
-ctrl.controller "BranchesNewCtrl", ($scope, $modal, Branch) ->
+ctrl.controller "BranchesNewCtrl", ($scope, Branch, $state) ->
 
   $scope.branch = {branch_delivery_zones: []}
 
@@ -85,5 +85,5 @@ ctrl.controller "BranchesNewCtrl", ($scope, $modal, Branch) ->
   $scope.saveBranch = (branch) ->
     Branch.post(branch).then (branch) ->
       $scope.alerts.push {type: 'success', msg: 'Branch added successfully.'}
-
+      $state.go('branches')
 

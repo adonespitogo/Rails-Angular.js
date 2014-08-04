@@ -1,7 +1,6 @@
 class RestoAdmin::BranchesController < RestoAdmin::BaseApiController
-  protect_from_forgery with: :null_session
-  skip_before_filter :verify_authenticity_token
-  layout false
+
+  include CleanPagination
 
   before_action :find_branch
 
@@ -22,6 +21,7 @@ class RestoAdmin::BranchesController < RestoAdmin::BaseApiController
 
   def update
     if @branch.update_attributes(branch_params)
+      @branch.delivery_zones.clear
       build_branch_delivery_zones
       @branch.save
       render :show
@@ -46,7 +46,6 @@ class RestoAdmin::BranchesController < RestoAdmin::BaseApiController
     end
 
     def build_branch_delivery_zones
-      @branch.delivery_zones.clear
       (params[:branch_delivery_zones] || []).each do |zone|
         @branch.delivery_zones.build(zone.permit(:branch_id, :delivery_charge, :delivery_charge_type, :radius, :lat, :lng, :address))
       end
