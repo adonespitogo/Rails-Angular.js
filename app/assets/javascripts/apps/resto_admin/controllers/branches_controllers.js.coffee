@@ -42,7 +42,6 @@ ctrl.controller "BranchesShowCtrl", ($scope, $stateParams, Restangular) ->
 
 ctrl.controller "BranchesEditCtrl", ($scope, Restangular, $stateParams) ->
 
-  $scope.chuva = 'initial value'
 
   Restangular.one('branches', $stateParams.id).get().then (b) ->
     $scope.branch = b
@@ -62,17 +61,29 @@ ctrl.controller "BranchesEditCtrl", ($scope, Restangular, $stateParams) ->
 
   $scope.saveBranch = (branch) ->
     $scope.branch.put().then (branch) ->
+      $scope.branch = branch
       $scope.alerts.push {type: 'success', msg: 'Branch added successfully.'}
 
 
 ctrl.controller "BranchesNewCtrl", ($scope, $modal, Branch) ->
+
+  $scope.branch = {branch_delivery_zones: []}
+
   $scope.addDeliveryZone = ->
-    modal = $modal.open
-              templateUrl: 'branches/add_delivery_zone.html'
-              controller: 'BranchesAddDeliveryZoneCtrl'
+
+    zone = {
+      address: $scope.address,
+      delivery_charge: $scope.delivery_charge,
+      delivery_charge_type: $scope.delivery_charge_type || 'amount',
+      radius: $scope.radius,
+      lat: $scope.data.geometry.location.k,
+      lng: $scope.data.geometry.location.B
+    }
+
+    $scope.branch.branch_delivery_zones.push zone
 
   $scope.saveBranch = (branch) ->
-    Branch.post({branch: branch}).then (branch) ->
+    Branch.post(branch).then (branch) ->
       $scope.alerts.push {type: 'success', msg: 'Branch added successfully.'}
 
 

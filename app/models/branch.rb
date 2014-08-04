@@ -6,6 +6,8 @@ class Branch < ActiveRecord::Base
               foreign_key: "branch_id",
               class_name: "BranchDeliveryZone"
 
+  accepts_nested_attributes_for :delivery_zones
+
   has_and_belongs_to_many :employees, -> { where role: "employee" },
                             class_name: "User",
                             association_foreign_key: "employee_id",

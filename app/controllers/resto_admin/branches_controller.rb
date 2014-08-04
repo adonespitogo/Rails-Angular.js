@@ -13,13 +13,17 @@ class RestoAdmin::BranchesController < RestoAdmin::BaseApiController
     @branch = Branch.new(branch_params)
     build_branch_delivery_zones
     @branch.branch_group_id = @branch_group.id
-    @branch.save
-    render :show
+    if @branch.save
+      render :show
+    else
+      render :json => @branch.errors.full_messages, status: 422
+    end
   end
 
   def update
-    build_branch_delivery_zones
-    if @branch.save(branch_params)
+    if @branch.update_attributes(branch_params)
+      build_branch_delivery_zones
+      @branch.save
       render :show
     else
       render :json => @branch.errors.full_messages, status: 422
@@ -35,16 +39,16 @@ class RestoAdmin::BranchesController < RestoAdmin::BaseApiController
       @branch = Branch.find(params[:id]) if params[:id]
     end
     def branch_params
-      params.require(:branch).permit(:name, :slug, :address, :phone_number, :working_hour_start,
+      params.permit(:name, :slug, :address, :phone_number, :working_hour_start,
         :working_hour_end, :lat, :lng, :minimum_order_amount, :delivery_hour_start, :delivery_hour_end,
         :meta_keywords, :meta_description
       )
     end
 
     def build_branch_delivery_zones
-      @branch.delivery_zones.delete_all
+      @branch.delivery_zones.clear
       (params[:branch_delivery_zones] || []).each do |zone|
-        @branch.delivery_zones.build(zone.permit(:delivery_charge, :delivery_charge_type, :radius, :lat, :lng, :address))
+        @branch.delivery_zones.build(zone.permit(:branch_id, :delivery_charge, :delivery_charge_type, :radius, :lat, :lng, :address))
       end
     end
 end
