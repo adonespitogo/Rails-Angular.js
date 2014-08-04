@@ -37,15 +37,25 @@ ctrl.controller "BranchesIndexCtrl", ($scope, Branch) ->
   $scope.branches_url = '/resto_admin/branches'
 
 ctrl.controller "BranchesShowCtrl", ($scope, $stateParams, Restangular) ->
+
+  $scope.center = null
+
+  $scope.$on 'mapInitialized', (event, map) ->
+    $scope.$watch 'center', ->
+      console.log $scope.center
+      map.setCenter($scope.center) if $scope.center != null
+
   Restangular.one('branches', $stateParams.id).get().then (b) ->
     $scope.branch = b
-    console.log b
+    $scope.center = {lat:b.lat, lng: b.lng}
 
 ctrl.controller "BranchesEditCtrl", ($scope, Restangular, $stateParams) ->
 
+  $scope.branch = {data: {}}
 
   Restangular.one('branches', $stateParams.id).get().then (b) ->
     $scope.branch = b
+    $scope.branch.data = ''
 
   $scope.addDeliveryZone = ->
 
@@ -54,13 +64,16 @@ ctrl.controller "BranchesEditCtrl", ($scope, Restangular, $stateParams) ->
       delivery_charge: $scope.delivery_charge,
       delivery_charge_type: $scope.delivery_charge_type,
       radius: $scope.radius,
-      lat: $scope.data.geometry.location.k,
-      lng: $scope.data.geometry.location.B
+      lng: $scope.data.geometry.location.k,
+      lat: $scope.data.geometry.location.B
     }
 
     $scope.branch.branch_delivery_zones.push zone
 
   $scope.saveBranch = (branch) ->
+    $scope.branch.lat = $scope.branch.data.geometry.location.k if $scope.branch.data.geometry
+    $scope.branch.lng = $scope.branch.data.geometry.location.B if $scope.branch.data.geometry
+    delete $scope.branch.data
     $scope.branch.put().then (branch) ->
       $scope.branch = branch
       $scope.alerts.push {type: 'success', msg: 'Branch added successfully.'}
@@ -77,8 +90,8 @@ ctrl.controller "BranchesNewCtrl", ($scope, Branch, $state) ->
       delivery_charge: $scope.delivery_charge,
       delivery_charge_type: $scope.delivery_charge_type || 'amount',
       radius: $scope.radius,
-      lat: $scope.data.geometry.location.k,
-      lng: $scope.data.geometry.location.B
+      lng: $scope.data.geometry.location.k,
+      lat: $scope.data.geometry.location.B
     }
 
     $scope.branch.branch_delivery_zones.push zone
