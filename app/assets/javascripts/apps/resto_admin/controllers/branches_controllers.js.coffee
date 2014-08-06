@@ -42,8 +42,14 @@ ctrl.controller "BranchesShowCtrl", ($scope, $stateParams, Restangular) ->
 
   $scope.$on 'mapInitialized', (event, map) ->
     $scope.$watch 'center', ->
-      console.log $scope.center
       map.setCenter($scope.center) if $scope.center != null
+      loc = new google.maps.LatLng($scope.center.lat, $scope.center.lng);
+      $scope.dynMarkers[0].setPosition(loc);
+      $scope.dynMarkers[0].setMap(map);
+
+  $scope.dynMarkers = [(new google.maps.Marker({
+            title: "Marker"
+          }))]
 
   Restangular.one('branches', $stateParams.id).get().then (b) ->
     $scope.branch = b
