@@ -45,7 +45,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-
+      <toaster-container toaster-options="{'time-out': 8000, 'close-button':true}"></toaster-container>
       <% if notice %>
         <div ng-init="alerts.push({type: 'success', msg: '<%= notice %>'})" ng-show="false"></div>
       <% end %>

@@ -43,7 +43,7 @@
                 <div class="btn-group">
                   <a ui-sref="branches.show({id: branch.id})" class="btn btn-primary btn-xs"><span class="fa fa-eye"></span></a>
                   <a ui-sref="branches.edit({id: branch.id})" class="btn btn-success btn-xs"><span class="fa fa-pencil"></span></a>
-                  <a ng-click="deleteBranch(branch)" class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
+                  <a ng-click="deleteBranch(branches, branch, $index)" class="btn btn-danger btn-xs"><span class="fa fa-trash-o"></span></a>
                 </div>
               </td>
             </tr>

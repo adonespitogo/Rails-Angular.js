@@ -9,7 +9,8 @@ app = angular.module('RestoAdminApp', [
   'angular-loading-bar'
   'uploadFile'
   'ngAutocomplete'
-  'ngMap'
+  'ngMap',
+  'toaster'
   # controllers
   'MainController'
   'DashboardController'

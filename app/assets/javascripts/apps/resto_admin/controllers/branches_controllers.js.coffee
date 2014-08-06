@@ -32,24 +32,21 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
         ncyBreadcrumbLabel: "Create New"
     )
 
-ctrl.controller "BranchesIndexCtrl", ($scope, Restangular) ->
-
+ctrl.controller "BranchesIndexCtrl", ($scope, Restangular, toaster) ->
   $scope.branches_url = '/resto_admin/branches'
-  $scope.deleteBranch = (branch)->
+  $scope.deleteBranch = (branches, branch, index)->
     if confirm "Are you sure you want to delete this branch?"
       Restangular.one('branches', branch.id).remove().then ->
-      $scope.alerts.push
-        type: 'success'
-        msg: 'Branch deleted successfully.'
+        branches.splice(index, 1)
+        $scope.branches = branches
+        $scope.notifyUser('success', 'Success', 'Branch deleted successfully.')
 
 ctrl.controller "BranchesShowCtrl", ($scope, $stateParams, Restangular, $state) ->
 
   $scope.deleteBranch = (branch)->
     if confirm "Are you sure you want to delete this branch?"
       Restangular.one('branches', branch.id).remove().then ->
-      $scope.alerts.push
-        type: 'success'
-        msg: 'Branch deleted successfully.'
+      $scope.notifyUser('success', 'Success', 'Branch deleted successfully.')
       $state.go('branches')
 
   $scope.center = null
@@ -117,7 +114,10 @@ ctrl.controller "BranchesNewCtrl", ($scope, Branch, $state) ->
     $scope.branch.branch_delivery_zones.push zone
 
   $scope.saveBranch = (branch) ->
+    $scope.branch.lat = $scope.branch.data.geometry.location.k if $scope.branch.data.geometry
+    $scope.branch.lng = $scope.branch.data.geometry.location.B if $scope.branch.data.geometry
+    delete $scope.branch.data
     Branch.post(branch).then (branch) ->
-      $scope.alerts.push {type: 'success', msg: 'Branch added successfully.'}
+      $scope.notifyUser('success', 'Success', 'Branch added successfully.')
       $state.go('branches')
 
