@@ -9,7 +9,7 @@
             <form action="" class="form-inline pull-right" role="form">
               <div class="form-group">
                 <div class="input-group">
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" ng-model="searchBranch">
                   <div class="input-group-addon"><span class="fa fa-search"></span></div>
                 </div>
               </div>
@@ -33,7 +33,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="branch in branches">
+            <tr ng-repeat="branch in branches | filter: searchBranch">
               <td>{{branch.name}}</td>
               <td>{{branch.address}}</td>
               <td>{{branch.phone_number}}</td>
