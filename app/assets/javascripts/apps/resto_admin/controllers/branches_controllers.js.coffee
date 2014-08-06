@@ -32,11 +32,25 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
         ncyBreadcrumbLabel: "Create New"
     )
 
-ctrl.controller "BranchesIndexCtrl", ($scope, Branch) ->
+ctrl.controller "BranchesIndexCtrl", ($scope, Restangular) ->
 
   $scope.branches_url = '/resto_admin/branches'
+  $scope.deleteBranch = (branch)->
+    if confirm "Are you sure you want to delete this branch?"
+      Restangular.one('branches', branch.id).remove().then ->
+      $scope.alerts.push
+        type: 'success'
+        msg: 'Branch deleted successfully.'
 
-ctrl.controller "BranchesShowCtrl", ($scope, $stateParams, Restangular) ->
+ctrl.controller "BranchesShowCtrl", ($scope, $stateParams, Restangular, $state) ->
+
+  $scope.deleteBranch = (branch)->
+    if confirm "Are you sure you want to delete this branch?"
+      Restangular.one('branches', branch.id).remove().then ->
+      $scope.alerts.push
+        type: 'success'
+        msg: 'Branch deleted successfully.'
+      $state.go('branches')
 
   $scope.center = null
 

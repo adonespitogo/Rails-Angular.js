@@ -34,6 +34,11 @@ class RestoAdmin::BranchesController < RestoAdmin::BaseApiController
     @branch = Branch.find(params[:id])
   end
 
+  def destroy
+    Branch.find(params[:id]).delete
+    head status: 200
+  end
+
   private
     def find_branch
       @branch = Branch.find(params[:id]) if params[:id]
