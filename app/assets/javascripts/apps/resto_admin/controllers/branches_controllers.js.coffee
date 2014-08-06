@@ -119,5 +119,5 @@ ctrl.controller "BranchesNewCtrl", ($scope, Branch, $state) ->
     delete $scope.branch.data
     Branch.post(branch).then (branch) ->
       $scope.notifyUser('success', 'Success', 'Branch added successfully.')
-      $state.go('branches')
+      $state.go('branches.show', id: branch.id)
 
