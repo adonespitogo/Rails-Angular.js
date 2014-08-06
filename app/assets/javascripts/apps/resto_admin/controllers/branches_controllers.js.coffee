@@ -93,7 +93,7 @@ ctrl.controller "BranchesEditCtrl", ($scope, Restangular, $stateParams) ->
     delete $scope.branch.data
     $scope.branch.put().then (branch) ->
       $scope.branch = branch
-      $scope.alerts.push {type: 'success', msg: 'Branch added successfully.'}
+      $scope.notifyUser('success', 'Success', 'Branch added successfully.')
 
 
 ctrl.controller "BranchesNewCtrl", ($scope, Branch, $state) ->

@@ -8,17 +8,6 @@ ctrl.controller 'NewCategoryCtrl',
     $scope.postCategory = ->
       Category.post($scope.category).then (cat) ->
         $scope.categories.push cat
-        $scope.alerts.push type: 'success', msg: 'Menu Category created successfully.'
+        $scope.notifyUser('success', 'Success', 'Menu Category created successfully.')
         $scope.$close()
-
-    # $scope.cancel =  ->
-    #   $modalInstance.dismiss()
-
-    # $scope.categoryForOpts = [{id: 1, label: 'This branch only'}, {'id':2, label: 'Branch Group'}]
-    # $scope.categoryFor = []
-    # $scope.categoryForExtraSettings = {
-    #   selectionLimit: 1
-    #   showCheckAll: false
-    #   showUncheckAll: false
-    # }
 
