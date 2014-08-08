@@ -18,7 +18,7 @@
           <div class="col-xs-4">
             <label for="">Employment Date</label>
             <div class="input-group">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="employee.employment_date" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -40,8 +40,17 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-xs-12">
-            <button class="btn btn-success pull-right" ng-click="createEmployee(employee)">Add Employee</button>
+          <div class="col-xs-4">
+            <label for="">Password</label>
+            <input type="password" class="form-control" ng-model="employee.password">
+          </div>
+          <div class="col-xs-4">
+            <label for="">Confirm Password</label>
+            <input type="password" class="form-control" ng-model="employee.password_confirmation">
+          </div>
+          <div class="col-xs-4">
+            <label for="">&nbsp;</label>
+            <button class="btn btn-success btn-block" ng-click="createEmployee(employee)">Add Employee</button>
           </div>
         </div>
       </form>

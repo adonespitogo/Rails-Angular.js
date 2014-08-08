@@ -28,9 +28,9 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
 ctrl.controller "EmployeesIndexCtrl",
   ($scope) ->
 
-ctrl.controller "EmployeesNewCtrl", ($scope, Branch, Restangular, Employee) ->
+ctrl.controller "EmployeesNewCtrl", ($scope, Branch, Restangular, Employee, $state) ->
 
-  $scope.employee = {}
+  $scope.employee = {branches:[]}
 
   $scope.branchesSettings = {displayProp:'name'}
 
@@ -39,16 +39,17 @@ ctrl.controller "EmployeesNewCtrl", ($scope, Branch, Restangular, Employee) ->
 
   $scope.selectedBranches = new Array()
 
-  $scope.dt = new Date()
+  $scope.employee.employment_date = new Date()
 
   $scope.clear = ->
-    $scope.dt = null
+    $scope.employee.employment_date = null
 
   $scope.disabled = (date, mode) ->
     ( mode == 'day' && ( date.getDay() == 0 || date.getDay() == 6 ) )
 
   $scope.toggleMin = ->
     $scope.minDate = if $scope.minDate then null else new Date()
+
   $scope.toggleMin()
 
   $scope.open = ($event) ->
@@ -65,5 +66,12 @@ ctrl.controller "EmployeesNewCtrl", ($scope, Branch, Restangular, Employee) ->
   $scope.format = $scope.formats[0];
 
   $scope.createEmployee = (employee) ->
-    Employee.post(employee).then (employee) ->
-      console.log employee
+    Employee.post(employee).then((employee) ->
+      $scope.notifyUser('success', 'Success', 'Employee added successfully.')
+      $state.go('employees')
+
+    ,(errors) ->
+      for err in errors.data
+        $scope.notifyUser('error', '', err)
+
+    )
