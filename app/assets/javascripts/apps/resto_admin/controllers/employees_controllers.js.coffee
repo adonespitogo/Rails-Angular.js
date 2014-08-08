@@ -25,8 +25,16 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
         ncyBreadcrumbLabel: "Edit"
     )
 
-ctrl.controller "EmployeesIndexCtrl",
-  ($scope) ->
+ctrl.controller "EmployeesIndexCtrl", ($scope, Branch) ->
+
+  $scope.employees_url = 'employees'
+
+  Branch.getList().then (branches) ->
+    $scope.branches = branches
+
+  $scope.filterByBranch = (branch) ->
+    $scope.employees_url = 'employees?branch_id=' + branch.id
+    $scope.selectedBranch = branch
 
 ctrl.controller "EmployeesNewCtrl", ($scope, Branch, Restangular, Employee, $state) ->
 

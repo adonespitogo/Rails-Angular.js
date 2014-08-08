@@ -1,6 +1,18 @@
 class RestoAdmin::EmployeesController < RestoAdmin::BaseApiController
+
+  include CleanPagination
+
+  def index
+    if params[:branch_id]
+      @employees = @branch_group.employees_by_branch(params[:branch_id])
+    else
+      @employees = @branch_group.employees.distinct
+    end
+  end
+
   def create
     @employee = User.new(employee_params)
+    @employee.role = 'employee'
     if @employee.save
       @employee.branches = find_assigned_branches
       head status: :created

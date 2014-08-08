@@ -9,6 +9,9 @@ class BranchGroup < ActiveRecord::Base
   has_many :branches
   belongs_to :restaurant
   has_and_belongs_to_many :menu_categories
+  has_many :employees, -> { where role: 'employee'},
+                          class_name: "User",
+                          through: :branches
 
   # custom methods
   def menu_items
@@ -33,6 +36,15 @@ class BranchGroup < ActiveRecord::Base
     MenuCategory.uniq.joins("LEFT JOIN branch_menu_categories ON branch_menu_categories.menu_category_id = menu_categories.id")
       .joins("LEFT JOIN branches ON branch_menu_categories.branch_id = branches.id")
       .joins("LEFT JOIN branch_groups ON branch_groups.id = branches.branch_group_id")
+      .where("branch_groups.id = ?", self.id)
+  end
+
+  def employees_by_branch(branch_id)
+    User.uniq.where(role: :employee)
+      .joins("LEFT JOIN branches_employees ON branches_employees.employee_id = users.id")
+      .joins("LEFT JOIN branches ON branches_employees.branch_id = branches.id")
+      .joins("LEFT JOIN branch_groups ON branches.branch_group_id = branch_groups.id")
+      .where("branches.id = ?", branch_id)
       .where("branch_groups.id = ?", self.id)
   end
 end
