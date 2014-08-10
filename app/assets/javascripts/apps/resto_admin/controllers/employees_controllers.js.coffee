@@ -27,13 +27,13 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
 
 ctrl.controller "EmployeesIndexCtrl", ($scope, Branch) ->
 
-  $scope.employees_url = 'employees'
+  $scope.employees_url = 'resto_admin/employees'
 
   Branch.getList().then (branches) ->
     $scope.branches = branches
 
   $scope.filterByBranch = (branch) ->
-    $scope.employees_url = 'employees?branch_id=' + branch.id
+    $scope.employees_url = 'resto_admin/employees?branch_id=' + branch.id
     $scope.selectedBranch = branch
 
 ctrl.controller "EmployeesNewCtrl", ($scope, Branch, Restangular, Employee, $state) ->
