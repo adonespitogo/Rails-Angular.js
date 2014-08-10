@@ -102,7 +102,7 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseApiController
 
     def decode_image
       # decode base64 string
-      if params[:img][:imageData] && params[:img][:imageContent] && params[:img][:imagePath]
+      if params[:img]
         Rails.logger.info 'decoding now'
         decoded_data = Base64.decode64(params[:img][:imageData]) # json parameter set in directive scope
         # create 'file' understandable by Paperclip
