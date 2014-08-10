@@ -1,5 +1,3 @@
-var baseUrl = 'http localhost:port'; // fill in as needed
-
 angular.module('uploadFile', ['MenuItemServices']) // using restangular is optional
 
 .directive('uploadImage', function () {
