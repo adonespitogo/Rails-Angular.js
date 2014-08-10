@@ -9,16 +9,16 @@
         <div class="form-group">
           <div class="col-xs-4">
             <label for="">First Name</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="employee.firstname">
           </div>
           <div class="col-xs-4">
             <label for="">Last Name</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="employee.lastname">
           </div>
           <div class="col-xs-4">
             <label for="">Employment Date</label>
             <div class="input-group">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="employee.employment_date" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -28,20 +28,29 @@
         <div class="form-group">
           <div class="col-xs-4">
             <label for="">Phone Number</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="employee.phone_number">
           </div>
           <div class="col-xs-4">
             <label for="">Email</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="employee.email">
           </div>
           <div class="col-xs-4">
             <label for="">Assigned Branches</label>
-            <div ng-dropdown-multiselect="" options="branches" selected-model="selectedBranches" ></div>
+            <div ng-dropdown-multiselect="" options="branches" selected-model="employee.branches" extra-settings="branchesSettings"></div>
           </div>
         </div>
         <div class="form-group">
-          <div class="col-xs-12">
-            <button class="btn btn-success pull-right">Submit</button>
+          <div class="col-xs-4">
+            <label for="">Password</label>
+            <input type="password" class="form-control" ng-model="employee.password">
+          </div>
+          <div class="col-xs-4">
+            <label for="">Confirm Password</label>
+            <input type="password" class="form-control" ng-model="employee.password_confirmation">
+          </div>
+          <div class="col-xs-4">
+            <label for="">&nbsp;</label>
+            <button class="btn btn-success btn-block" ng-click="updateEmployee(employee)">Update Employee</button>
           </div>
         </div>
       </form>

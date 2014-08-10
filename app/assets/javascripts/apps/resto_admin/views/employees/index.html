@@ -44,7 +44,7 @@
               <td>(to be formatted)</td>
               <td>
                 <div class="btn-group">
-                  <a ui-sref="employees.edit" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>
+                  <a ui-sref="employees.edit({id: user.id})" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>
                   <a ng-click="deleteEmployee(user, employees, $index)" class="btn btn-xs btn-danger"><span class="fa fa-trash-o"></span></a>
                 </div>
               </td>

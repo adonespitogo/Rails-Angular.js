@@ -25,6 +25,16 @@ class RestoAdmin::EmployeesController < RestoAdmin::BaseApiController
     @employee = User.find(params[:id])
   end
 
+  def update
+    @employee = User.find(params[:id])
+    if @employee.update(employee_params)
+      @employee.branches = find_assigned_branches
+      head status: 200
+    else
+      render json: @employee.errors.full_messages, status: 422
+    end
+  end
+
   def destroy
     @employee = User.find(params[:id])
     @employee.branches.delete_all
