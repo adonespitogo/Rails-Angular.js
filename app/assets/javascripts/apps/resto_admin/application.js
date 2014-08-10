@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular
-//= require angular-1.2.8/angular-animate.min
+//= require angular-animate
 //= require angular-loading-bar
 //= require angular-resource
 //= require angular-breadcrumb
