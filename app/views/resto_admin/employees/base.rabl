@@ -1,0 +1,1 @@
+attributes :id, :firstname, :lastname, :phone_number, :email, :created_at

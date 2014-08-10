@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140802181533) do
+ActiveRecord::Schema.define(version: 20140810085936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,14 +92,6 @@ ActiveRecord::Schema.define(version: 20140802181533) do
     t.integer  "branch_group_id"
   end
 
-  create_table "branches_employees", id: false, force: true do |t|
-    t.integer "branch_id",   null: false
-    t.integer "employee_id", null: false
-  end
-
-  add_index "branches_employees", ["branch_id", "employee_id"], name: "index_branches_employees_on_branch_id_and_employee_id", using: :btree
-  add_index "branches_employees", ["employee_id", "branch_id"], name: "index_branches_employees_on_employee_id_and_branch_id", using: :btree
-
   create_table "countries", force: true do |t|
     t.string   "name"
     t.string   "code2"
@@ -127,6 +119,16 @@ ActiveRecord::Schema.define(version: 20140802181533) do
 
   add_index "cuisines_restaurants", ["cuisine_id", "restaurant_id"], name: "index_cuisines_restaurants_on_cuisine_id_and_restaurant_id", using: :btree
   add_index "cuisines_restaurants", ["restaurant_id", "cuisine_id"], name: "index_cuisines_restaurants_on_restaurant_id_and_cuisine_id", using: :btree
+
+  create_table "employees", force: true do |t|
+    t.integer  "branch_id",  null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "employees", ["branch_id", "user_id"], name: "index_employees_on_branch_id_and_user_id", using: :btree
+  add_index "employees", ["user_id", "branch_id"], name: "index_employees_on_user_id_and_branch_id", using: :btree
 
   create_table "geo_zones", force: true do |t|
     t.float    "lat"
