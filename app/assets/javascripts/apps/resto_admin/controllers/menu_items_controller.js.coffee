@@ -99,17 +99,9 @@ ctrl.controller "NewMenuItemCtrl",
     $scope.save = (active) ->
       $scope.item.deleted_at = if active then null else new Date()
       $scope.item.item_options = $scope.item_options
-      $scope.item.image = $scope.image
       MenuItem.post($scope.item).then (item) ->
         $scope.item = item
         $scope.alerts.push {type: 'success', msg: 'Menu item saved.'}
-
-    $scope.uploadComplete = (content) ->
-      console.log content
-
-    # // triggers click event for input file, causing the file selection window to open
-    $scope.openFileWindow = ->
-      angular.element( document.querySelector( '#fileUpload' ) ).trigger('click');
 
 ctrl.controller "EditMenuItemCtrl",
   ($scope, $modal, Branch, Category, Restangular, $stateParams, MenuItem) ->
@@ -140,18 +132,10 @@ ctrl.controller "EditMenuItemCtrl",
     $scope.save = (active) ->
       $scope.item.deleted_at = if active then null else new Date()
       $scope.item.item_options = $scope.item_options
-      $scope.item.image = $scope.image
       $scope.item.put().then (item)->
         $scope.item = item
         $scope.item_options = item.item_options
         $scope.alerts.push {type: 'success', msg: 'Menu item saved.'}
-
-    $scope.uploadComplete = (content) ->
-      console.log content
-
-    # // triggers click event for input file, causing the file selection window to open
-    $scope.openFileWindow = ->
-      angular.element( document.querySelector( '#fileUpload' ) ).trigger('click');
 
 
 ctrl.controller 'ItemQuickEditCtrl',
