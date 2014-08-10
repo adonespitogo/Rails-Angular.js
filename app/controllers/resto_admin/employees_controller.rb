@@ -11,13 +11,14 @@ class RestoAdmin::EmployeesController < RestoAdmin::BaseApiController
   end
 
   def create
-    @employee = User.new(employee_params)
-    @employee.role = 'employee'
-    if @employee.save
-      @employee.branches = find_assigned_branches
+    @user = User.new(user_params)
+    @user.role = 'employee'
+    build_employees
+    if @user.save
+      @employee = @user
       head status: :created
     else
-      render json: @employee.errors.full_messages, status: 422
+      render json: @user.errors.full_messages, status: 422
     end
   end
 
@@ -26,9 +27,9 @@ class RestoAdmin::EmployeesController < RestoAdmin::BaseApiController
   end
 
   def update
-    @employee = User.find(params[:id])
-    if @employee.update(employee_params)
-      @employee.branches = find_assigned_branches
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      update_employees
       head status: 200
     else
       render json: @employee.errors.full_messages, status: 422
@@ -36,31 +37,35 @@ class RestoAdmin::EmployeesController < RestoAdmin::BaseApiController
   end
 
   def destroy
-    @employee = User.find(params[:id])
-    @employee.branches.delete_all
-    @employee.delete
+    @user = User.find(params[:id])
+    @user.delete
     head :status => 200
   end
 
   private
-    def employee_params
+    def user_params
       params.permit(
         :firstname,
         :lastname,
         :phone_number,
         :email,
         :password,
-        :password_confirmation
+        :password_confirmation,
+        :created_at
       )
     end
 
-    def find_assigned_branches
-      branches = []
+    def build_employees
       if params[:branches]
         params[:branches].each do |branch_param|
-          branches << Branch.find(branch_param[:id])
+          @user.employees.build(branch_id: branch_param[:id])
         end
       end
-      branches
+    end
+
+    def update_employees
+      @user.employees.delete_all
+      build_employees
+      @user.save
     end
 end

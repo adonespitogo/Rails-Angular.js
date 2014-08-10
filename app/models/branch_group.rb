@@ -9,11 +9,18 @@ class BranchGroup < ActiveRecord::Base
   has_many :branches
   belongs_to :restaurant
   has_and_belongs_to_many :menu_categories
-  has_many :employees, -> { where role: 'employee'},
-                          class_name: "User",
-                          through: :branches
 
   # custom methods
+  def employees
+    User.uniq.where(role: :employee)
+      .references(:employees)
+      .joins("LEFT JOIN employees ON employees.user_id = users.id")
+      .joins("LEFT JOIN branches ON employees.branch_id = branches.id")
+      .joins("LEFT JOIN branch_groups ON branches.branch_group_id = branch_groups.id")
+      .where("branch_groups.id = ?", self.id)
+      .order('firstname')
+  end
+
   def menu_items
     MenuItem.uniq.joins("LEFT JOIN menu_categories_menu_items ON menu_items.id = menu_categories_menu_items.menu_item_id")
       .joins("LEFT JOIN branch_menu_categories ON menu_categories_menu_items.branch_menu_category_id = branch_menu_categories.id")
@@ -40,11 +47,6 @@ class BranchGroup < ActiveRecord::Base
   end
 
   def employees_by_branch(branch_id)
-    User.uniq.where(role: :employee)
-      .joins("LEFT JOIN branches_employees ON branches_employees.employee_id = users.id")
-      .joins("LEFT JOIN branches ON branches_employees.branch_id = branches.id")
-      .joins("LEFT JOIN branch_groups ON branches.branch_group_id = branch_groups.id")
-      .where("branches.id = ?", branch_id)
-      .where("branch_groups.id = ?", self.id)
+    self.employees.where("branches.id = ?", branch_id)
   end
 end

@@ -8,10 +8,9 @@ class Branch < ActiveRecord::Base
 
   accepts_nested_attributes_for :delivery_zones
 
-  has_and_belongs_to_many :employees, -> { where role: "employee" },
-                            class_name: "User",
-                            association_foreign_key: "employee_id",
-                            join_table: "branches_employees"
+  has_many :employees
+  has_many :users, -> { where(role: :employee) },
+            through: :employees
 
   has_and_belongs_to_many :menu_categories
   has_many :orders

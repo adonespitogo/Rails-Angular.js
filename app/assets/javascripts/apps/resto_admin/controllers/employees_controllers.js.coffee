@@ -33,7 +33,7 @@ ctrl.controller "EmployeesIndexCtrl", ($scope, Branch, Restangular) ->
     $scope.branches = branches
 
   $scope.filterByBranch = (branch) ->
-    $scope.employees_url = 'resto_admin/employees?branch_id=' + branch.id
+    $scope.employees_url = if branch.id == null then 'resto_admin/employees' else 'resto_admin/employees?branch_id=' + branch.id
     $scope.selectedBranch = branch
 
   $scope.deleteEmployee = (user, employees, index) ->
@@ -54,18 +54,13 @@ ctrl.controller "EmployeesNewCtrl", ($scope, Branch, Restangular, Employee, $sta
 
   $scope.selectedBranches = new Array()
 
-  $scope.employee.employment_date = new Date()
+  $scope.employee.created_at = new Date()
 
   $scope.clear = ->
-    $scope.employee.employment_date = null
+    $scope.employee.created_at = null
 
   $scope.disabled = (date, mode) ->
     ( mode == 'day' && ( date.getDay() == 0 || date.getDay() == 6 ) )
-
-  $scope.toggleMin = ->
-    $scope.minDate = if $scope.minDate then null else new Date()
-
-  $scope.toggleMin()
 
   $scope.open = ($event) ->
     $event.preventDefault()
@@ -75,10 +70,6 @@ ctrl.controller "EmployeesNewCtrl", ($scope, Branch, Restangular, Employee, $sta
   $scope.dateOptions =
     formatYear: 'yy'
     startingDay: 1
-
-  $scope.initDate = new Date('2016-15-20');
-  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-  $scope.format = $scope.formats[0];
 
   $scope.createEmployee = (employee) ->
     Employee.post(employee).then((employee) ->
@@ -93,11 +84,11 @@ ctrl.controller "EmployeesNewCtrl", ($scope, Branch, Restangular, Employee, $sta
 
 
 ctrl.controller "EmployeesEditCtrl", ($scope, Branch, Restangular, Employee, $state, $stateParams) ->
+  $scope.employee = {branches:[]}
 
   Restangular.one('employees', $stateParams.id).get().then (employee) ->
     $scope.employee = employee
 
-  $scope.employee = {branches:[]}
 
   $scope.branchesSettings = {displayProp:'name'}
 
@@ -106,18 +97,8 @@ ctrl.controller "EmployeesEditCtrl", ($scope, Branch, Restangular, Employee, $st
 
   $scope.selectedBranches = new Array()
 
-  $scope.employee.employment_date = new Date()
-
   $scope.clear = ->
-    $scope.employee.employment_date = null
-
-  $scope.disabled = (date, mode) ->
-    ( mode == 'day' && ( date.getDay() == 0 || date.getDay() == 6 ) )
-
-  $scope.toggleMin = ->
-    $scope.minDate = if $scope.minDate then null else new Date()
-
-  $scope.toggleMin()
+    $scope.employee.created_at = null
 
   $scope.open = ($event) ->
     $event.preventDefault()
@@ -128,9 +109,7 @@ ctrl.controller "EmployeesEditCtrl", ($scope, Branch, Restangular, Employee, $st
     formatYear: 'yy'
     startingDay: 1
 
-  $scope.initDate = new Date('2016-15-20');
-  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-  $scope.format = $scope.formats[0];
+  $scope.initDate = new Date();
 
   $scope.updateEmployee = (employee) ->
     employee.put().then((employee) ->

@@ -13,9 +13,9 @@ class User < ActiveRecord::Base
                             join_table: "admins_branch_groups",
                             dependent: :destroy
 
-  has_and_belongs_to_many :branches,
-                            join_table: "branches_employees",
-                            foreign_key: "employee_id"
+  has_many :employees, :dependent => :destroy
+
+  has_many :branches, through: :employees
 
   has_many :activities, class_name: "UserActivity"
 
