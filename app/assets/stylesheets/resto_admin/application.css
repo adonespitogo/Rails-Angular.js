@@ -13,6 +13,7 @@
  *= require bootstrap-flatly
  *= require font-awesome
  *= require angular-loading-bar
+ *= require toaster
  *= require_tree .
  *= require_self
  */

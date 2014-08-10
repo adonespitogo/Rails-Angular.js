@@ -71,7 +71,7 @@ ctrl.controller "MenuItemIndexCtrl",
       if confirm "Are you sure you want to delete this menu item?"
         Restangular.one('menu_items', item.id).remove().then ->
           $scope.menu_items.splice(index, 1)
-          $scope.alerts.push type: 'success', msg: 'Menu Item deleted successfully.'
+          $scope.notifyUser('success', 'Success', 'Menu Item deleted successfully.')
 
 ctrl.controller "NewMenuItemCtrl",
   ($scope, $modal, Branch, Category, MenuItem) ->
@@ -101,7 +101,7 @@ ctrl.controller "NewMenuItemCtrl",
       $scope.item.item_options = $scope.item_options
       MenuItem.post($scope.item).then (item) ->
         $scope.item = item
-        $scope.alerts.push {type: 'success', msg: 'Menu item saved.'}
+        $scope.notifyUser('success', 'Success', 'Menu item saved successfully.')
 
 ctrl.controller "EditMenuItemCtrl",
   ($scope, $modal, Branch, Category, Restangular, $stateParams, MenuItem) ->
@@ -135,7 +135,7 @@ ctrl.controller "EditMenuItemCtrl",
       $scope.item.put().then (item)->
         $scope.item = item
         $scope.item_options = item.item_options
-        $scope.alerts.push {type: 'success', msg: 'Menu item saved.'}
+        $scope.notifyUser('success', 'Success', 'Menu item updated successfully.')
 
 
 ctrl.controller 'ItemQuickEditCtrl',

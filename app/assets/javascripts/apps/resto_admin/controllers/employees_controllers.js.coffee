@@ -28,36 +28,42 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
 ctrl.controller "EmployeesIndexCtrl",
   ($scope) ->
 
-ctrl.controller "EmployeesNewCtrl",
-  ($scope) ->
+ctrl.controller "EmployeesNewCtrl", ($scope, Branch, Restangular, Employee) ->
 
-    $scope.branches = [
-      {id: 1, label: 'Branch 1'}
-      {id: 2, label: 'Branch 2'}
-    ]
-    $scope.selectedBranches = new Array()
+  $scope.employee = {}
 
-    $scope.dt = new Date()
+  $scope.branchesSettings = {displayProp:'name'}
 
-    $scope.clear = ->
-      $scope.dt = null
+  Branch.getList().then (branches) ->
+    $scope.branches = branches
 
-    $scope.disabled = (date, mode) ->
-      ( mode == 'day' && ( date.getDay() == 0 || date.getDay() == 6 ) )
+  $scope.selectedBranches = new Array()
 
-    $scope.toggleMin = ->
-      $scope.minDate = if $scope.minDate then null else new Date()
-    $scope.toggleMin()
+  $scope.dt = new Date()
 
-    $scope.open = ($event) ->
-      $event.preventDefault()
-      $event.stopPropagation()
-      $scope.opened = true
+  $scope.clear = ->
+    $scope.dt = null
 
-    $scope.dateOptions =
-      formatYear: 'yy'
-      startingDay: 1
+  $scope.disabled = (date, mode) ->
+    ( mode == 'day' && ( date.getDay() == 0 || date.getDay() == 6 ) )
 
-    $scope.initDate = new Date('2016-15-20');
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
+  $scope.toggleMin = ->
+    $scope.minDate = if $scope.minDate then null else new Date()
+  $scope.toggleMin()
+
+  $scope.open = ($event) ->
+    $event.preventDefault()
+    $event.stopPropagation()
+    $scope.opened = true
+
+  $scope.dateOptions =
+    formatYear: 'yy'
+    startingDay: 1
+
+  $scope.initDate = new Date('2016-15-20');
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+
+  $scope.createEmployee = (employee) ->
+    Employee.post(employee).then (employee) ->
+      console.log employee

@@ -7,7 +7,7 @@ main_ctrl.config ($stateProvider, $urlRouterProvider) ->
   $urlRouterProvider.otherwise('/dashboard')
 
 main_ctrl.controller "MainCtrl",
-  ($scope) ->
+  ($scope, toaster) ->
 
     $scope.navigation = [
       {ref: 'dashboard', text: 'Dashboard'}
@@ -24,3 +24,6 @@ main_ctrl.controller "MainCtrl",
 
     $scope.closeAlert = (index) ->
       $scope.alerts.splice(index, 1)
+
+    $scope.notifyUser = ->
+      toaster.pop.apply(toaster, arguments)

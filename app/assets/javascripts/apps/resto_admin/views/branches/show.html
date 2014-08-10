@@ -5,13 +5,13 @@
         <h1>
           Branch Information
           <div class="btn-group pull-right" dropdown>
-            <button type="button" class="btn btn-success" ui-sref="branches.edit">Edit</button>
+            <button type="button" class="btn btn-success" ui-sref="branches.edit({id: branch.id})">Edit</button>
             <button type="button" class="btn btn-success dropdown-toggle">
               <span class="caret"></span>
               <span class="sr-only">Split button!</span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li><a>Delete Branch <span class="pull-right fa fa-times"></span></a></li>
+              <li><a ng-click="deleteBranch(branch)">Delete Branch <span class="pull-right fa fa-times"></span></a></li>
             </ul>
           </div>
         </h1>
@@ -108,7 +108,11 @@
       <div class="panel panel-primary">
         <div class="panel-heading">Map Location</div>
         <div class="panel-body">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3925.2208432770644!2d123.9088056!3d10.3242034!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99917f05d760d%3A0xb1f318aef8b60cfb!2sCrown+7%2C+Pope+John+Paul+II+Ave%2C+Cebu+City%2C+Philippines!5e0!3m2!1sen!2s!4v1405619478385" width="100%" height="300" frameborder="0" style="border:0"></iframe>
+          <div ng-if="branch" style="width: 100%; height: 250px">
+            <map center='center'>
+              <marker position="current"></marker>
+            </map>
+          </div>
         </div>
       </div>
     </div>

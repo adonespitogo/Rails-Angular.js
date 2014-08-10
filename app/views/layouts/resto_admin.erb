@@ -2,6 +2,7 @@
 <html ng-app="RestoAdminApp" ng-controller="MainCtrl" lang="en">
 <head>
   <title>[Restaurant Name]</title>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
   <%= stylesheet_link_tag    'resto_admin/application', media: 'all' %>
   <%= javascript_include_tag 'apps/resto_admin/application' %>
   <%= csrf_meta_tags %>
@@ -44,16 +45,13 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-
+      <toaster-container toaster-options="{'time-out': 5000, 'close-button':true, 'position-class': 'toast-bottom-right'}"></toaster-container>
       <% if notice %>
-        <div ng-init="alerts.push({type: 'success', msg: '<%= notice %>'})" ng-show="false"></div>
+        <div ng-init="notifyUser('success', '', '<%= notice %>')" ng-show="false"></div>
       <% end %>
-
       <% if alert %>
-        <div ng-init="alerts.push({type: 'danger', msg: '<%= alert %>'})" ng-show="false"></div>
+        <div ng-init="notifyUser('error', '', '<%= alert %>')" ng-show="false"></div>
       <% end %>
-
-      <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
     </div>
   </div>
   <div class="row">

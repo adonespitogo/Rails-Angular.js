@@ -107,11 +107,12 @@
           </ul>
 
       <form action="" role="form">
+        {{data}}
         <div class="row">
           <div class="col-xs-6">
             <div class="form-group">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search place">
+                <input type="text" class="form-control" placeholder="Search place" ng-autocomplete ng-model="address" details="data">
                 <div class="input-group-addon"><span class="fa fa-search"></span></div>
               </div>
             </div>

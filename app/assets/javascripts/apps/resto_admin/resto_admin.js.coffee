@@ -7,8 +7,10 @@ app = angular.module('RestoAdminApp', [
   'angularjs-dropdown-multiselect'
   'begriffs.paginate-anything'
   'angular-loading-bar'
-  'ngUpload'
   'uploadFile'
+  'ngAutocomplete'
+  'ngMap',
+  'toaster'
   # controllers
   'MainController'
   'DashboardController'
@@ -23,6 +25,7 @@ app = angular.module('RestoAdminApp', [
   'CategoryServices'
   'BranchServices'
   'ItemOptionsServices'
+  'EmployeesServices'
 ])
 
 app.config ($breadcrumbProvider, RestangularProvider) ->
