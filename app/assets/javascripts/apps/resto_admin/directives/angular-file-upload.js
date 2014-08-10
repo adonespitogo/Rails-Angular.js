@@ -10,7 +10,7 @@ return {
     output: '=imageOutput'
   },
   template: '<input type="file" id="fileUploadInput" ng-show="false"/>'+
-            '<img ng-src="data:/base64:{{imagePreview}}" ng-if="imagePreview" title="Click to add image." ng-click="openFileWindow()"/>' +
+            '<img ng-src="data:{{imageContent}};base64,{{imagePreview}}" ng-if="imagePreview" title="Click to add image." ng-click="openFileWindow()" class="img-responsive"/>' +
             '<img ng-if="!imagePreview" title="Click to add image." class="img-responsive" ng-src="{{model}}" ng-click="openFileWindow()" ng-class="{ hidden: !model}" >'+
             '<div class="btn btn-default" ng-click="openFileWindow()" ng-class=" {hidden: model||imagePreview}">Click to add an image.</div>',
 
