@@ -102,9 +102,9 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseApiController
 
     def decode_image
       # decode base64 string
-      if params[:imageData] && params[:imageContent] && params[:imagePath]
+      if params[:image][:imageData] && params[:image][:imageContent] && params[:image][:imagePath]
         Rails.logger.info 'decoding now'
-        decoded_data = Base64.decode64(params[:imageData]) # json parameter set in directive scope
+        decoded_data = Base64.decode64(params[:image][:imageData]) # json parameter set in directive scope
         # create 'file' understandable by Paperclip
         data = StringIO.new(decoded_data)
         data.class_eval do
@@ -112,8 +112,8 @@ class RestoAdmin::MenuItemsController < RestoAdmin::BaseApiController
         end
 
         # set file properties
-        data.content_type = params[:imageContent] # json parameter set in directive scope
-        data.original_filename = params[:imagePath] # json parameter set in directive scope
+        data.content_type = params[:image][:imageContent] # json parameter set in directive scope
+        data.original_filename = params[:image][:imagePath] # json parameter set in directive scope
 
         # update hash, I had to set @up to persist the hash so I can pass it for saving
         # since set_params returns a new hash everytime it is called (and must be used to explicitly list which params are allowed otherwise it throws an exception)

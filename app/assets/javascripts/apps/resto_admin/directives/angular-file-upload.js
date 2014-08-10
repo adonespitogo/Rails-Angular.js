@@ -4,30 +4,49 @@ angular.module('uploadFile', ['MenuItemServices']) // using restangular is optio
 
 .directive('uploadImage', function () {
 return {
- restrict: 'A',
- link: function (scope, elem, attrs) {
-  var reader = new FileReader();
-  reader.onload = function (e) {
-    // retrieves the image data from the reader.readAsBinaryString method and stores as data
-    // calls the uploadImage method, which does a post or put request to server
-    scope.item.imageData = btoa(e.target.result);
-    // scope.uploadImage(scope.item.imagePath);
-    // updates scope
-    // scope.$apply();
-    
-  };
+  restrict: 'EA',
+  scope: {
+    model: '=imageSrc',
+    output: '=imageOutput'
+  },
+  template: '<input type="file" id="fileUploadInput" ng-show="false"/>'+
+            '<img ng-src="data:/base64:{{imagePreview}}" ng-if="imagePreview" title="Click to add image." ng-click="openFileWindow()"/>' +
+            '<img ng-if="!imagePreview" title="Click to add image." class="img-responsive" ng-src="{{model}}" ng-click="openFileWindow()" ng-class="{ hidden: !model}" >'+
+            '<div class="btn btn-default" ng-click="openFileWindow()" ng-class=" {hidden: model||imagePreview}">Click to add an image.</div>',
 
-  // listens on change event
-  elem.on('change', function() {
-    var file = elem[0].files[0];
-    // gathers file data (filename and type) to send in json
-    scope.item.imageContent = file.type;
-    scope.item.imagePath = file.name;
-    // updates scope; not sure if this is needed here, I can not remember with the testing I did...and I do not quite understand the apply method that well, as I have read limited documentation on it.
-    // scope.$apply();
-    // converts file to binary string
-    reader.readAsBinaryString(file);
-  });
- }
+  link: function (scope, elem, attrs) {
+
+    var inputElem = angular.element('#fileUploadInput');
+    // triggers click event for input file, causing the file selection window to open
+    scope.openFileWindow = function(){
+      inputElem.trigger('click');
+    }
+
+    scope.readerOnload = function(e){
+      var imageData = btoa(e.target.result);
+      scope.imagePreview = imageData
+      scope.output = {
+        imageContent: scope.imageContent,
+        imagePath: scope.imagePath,
+        imageData: imageData
+      }
+      scope.$apply()
+    }
+
+
+
+    var reader = new FileReader();
+    reader.onload = scope.readerOnload
+
+    // listens on change event
+    inputElem.on('change', function() {
+      var file = inputElem[0].files[0];
+      // gathers file data (filename and type) to send in json
+      scope.imageContent = file.type;
+      scope.imagePath = file.name;
+      // converts file to binary string
+      reader.readAsBinaryString(file);
+    });
+  }
 };
 });

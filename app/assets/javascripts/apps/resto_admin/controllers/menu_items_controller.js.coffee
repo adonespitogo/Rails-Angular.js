@@ -99,6 +99,7 @@ ctrl.controller "NewMenuItemCtrl",
     $scope.save = (active) ->
       $scope.item.deleted_at = if active then null else new Date()
       $scope.item.item_options = $scope.item_options
+      $scope.item.image = $scope.image
       MenuItem.post($scope.item).then (item) ->
         $scope.item = item
         $scope.alerts.push {type: 'success', msg: 'Menu item saved.'}
@@ -139,6 +140,7 @@ ctrl.controller "EditMenuItemCtrl",
     $scope.save = (active) ->
       $scope.item.deleted_at = if active then null else new Date()
       $scope.item.item_options = $scope.item_options
+      $scope.item.image = $scope.image
       $scope.item.put().then (item)->
         $scope.item = item
         $scope.item_options = item.item_options
