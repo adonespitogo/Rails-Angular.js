@@ -25,7 +25,7 @@ ctrl.config ($stateProvider, $urlRouterProvider) ->
         ncyBreadcrumbLabel: "Edit"
     )
 
-ctrl.controller "EmployeesIndexCtrl", ($scope, Branch) ->
+ctrl.controller "EmployeesIndexCtrl", ($scope, Branch, Restangular) ->
 
   $scope.employees_url = 'resto_admin/employees'
 
@@ -35,6 +35,13 @@ ctrl.controller "EmployeesIndexCtrl", ($scope, Branch) ->
   $scope.filterByBranch = (branch) ->
     $scope.employees_url = 'resto_admin/employees?branch_id=' + branch.id
     $scope.selectedBranch = branch
+
+  $scope.deleteEmployee = (user, employees, index) ->
+    if confirm "Are you sure you want to delete this employee?"
+      Restangular.one('employees', user.id).remove().then ->
+        $scope.notifyUser 'success', 'Delete', 'Employee has been removed successfully.'
+        employees.splice(index, 1)
+        $scope.employees = employees
 
 ctrl.controller "EmployeesNewCtrl", ($scope, Branch, Restangular, Employee, $state) ->
 

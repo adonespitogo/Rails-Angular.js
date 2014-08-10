@@ -25,6 +25,13 @@ class RestoAdmin::EmployeesController < RestoAdmin::BaseApiController
     @employee = User.find(params[:id])
   end
 
+  def destroy
+    @employee = User.find(params[:id])
+    @employee.branches.delete_all
+    @employee.delete
+    head :status => 200
+  end
+
   private
     def employee_params
       params.permit(
