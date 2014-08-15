@@ -55,13 +55,7 @@
         </div> -->
         <div class="row">
           <div class="col-xs-4">
-
-            <input type="file" id="fileUpload" ng-show="false" upload-image/>
-            <img class="img-responsive" ng-src="{{item.image}}" ng-click="openFileWindow()" ng-class="{ hidden: !item.image}" >
-            <div class="btn btn-default" ng-click="openFileWindow()" ng-class=" {hidden: item.image}">
-                Click to add an image.
-            </div>
-
+            <upload-image image-src="item.image" image-output="item.img"></upload-image>
           </div>
         </div>
       </div>

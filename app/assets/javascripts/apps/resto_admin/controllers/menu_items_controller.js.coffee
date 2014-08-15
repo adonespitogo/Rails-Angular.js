@@ -103,13 +103,6 @@ ctrl.controller "NewMenuItemCtrl",
         $scope.item = item
         $scope.notifyUser('success', 'Success', 'Menu item saved successfully.')
 
-    $scope.uploadComplete = (content) ->
-      console.log content
-
-    # // triggers click event for input file, causing the file selection window to open
-    $scope.openFileWindow = ->
-      angular.element( document.querySelector( '#fileUpload' ) ).trigger('click');
-
 ctrl.controller "EditMenuItemCtrl",
   ($scope, $modal, Branch, Category, Restangular, $stateParams, MenuItem) ->
 
@@ -143,13 +136,6 @@ ctrl.controller "EditMenuItemCtrl",
         $scope.item = item
         $scope.item_options = item.item_options
         $scope.notifyUser('success', 'Success', 'Menu item updated successfully.')
-
-    $scope.uploadComplete = (content) ->
-      console.log content
-
-    # // triggers click event for input file, causing the file selection window to open
-    $scope.openFileWindow = ->
-      angular.element( document.querySelector( '#fileUpload' ) ).trigger('click');
 
 
 ctrl.controller 'ItemQuickEditCtrl',
