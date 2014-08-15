@@ -11,58 +11,58 @@
       <hr>
       <div class="row">
         <div class="col-xs-4">
-          <img src="/assets/tmp/images/wingers-logo.png" alt="RESTAURANT LOGO HERE" class="img-thumbnail img-responsive" style="width: 100%; margin-bottom: 10px">
+          <img ng-src="{{restaurant.logo}}" alt="RESTAURANT LOGO HERE" class="img-thumbnail img-responsive" style="width: 100%; margin-bottom: 10px">
           <a class="btn btn-info btn-block">Upload New Logo</a>
           <hr>
           <label for=""><strong>Social Media Links</strong></label>
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-facebook-square"></span></span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="restaurant.fb_link">
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-twitter-square"></span></span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="restaurant.twitter_link">
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-google-plus-square"></span></span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="restaurant.gplus_link">
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-instagram"></span></span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="restaurant.instagram_link">
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-foursquare"></span></span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="restaurant.foursquare_link">
           </div>
         </div>
         <div class="col-xs-8">
           <div class="form-group">
             <label for="">Name</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="restaurant.name">
           </div>
           <div class="form-group">
             <label for="">Slug</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="restaurant.slug">
           </div>
           <div class="form-group">
             <label for="">Description</label>
-            <textarea cols="30" rows="10" class="form-control"></textarea>
+            <textarea cols="30" rows="10" class="form-control" ng-model="restaurant.description"></textarea>
           </div>
           <div class="form-group">
             <label for="">Meta Keywords</label>
-            <textarea cols="30" rows="3" class="form-control"></textarea>
+            <textarea cols="30" rows="3" class="form-control" ng-model="restaurant.meta_keywords"></textarea>
           </div>
           <div class="form-group">
             <label for="">Meta Description</label>
-            <textarea cols="30" rows="5" class="form-control"></textarea>
+            <textarea cols="30" rows="5" class="form-control" ng-model="restaurant.meta_description"></textarea>
           </div>
-          <button class="btn btn-success">Save and Publish</button>
+          <button class="btn btn-success" ng-click="updateRestaurant(restaurant)">Save and Publish</button>
         </div>
       </div>
     </div>
