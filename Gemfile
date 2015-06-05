@@ -1,7 +1,7 @@
 ruby '2.0.0'
 source 'https://rubygems.org'
 
-gem 'pg'
+gem 'mysql2'
 gem 'rails', '4.1.0'
 gem 'devise'
 gem "seedbank"

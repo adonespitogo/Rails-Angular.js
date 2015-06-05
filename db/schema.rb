@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140810085936) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "activities", force: true do |t|
     t.string   "activity"
     t.text     "description"
@@ -33,13 +30,13 @@ ActiveRecord::Schema.define(version: 20140810085936) do
 
   create_table "branch_delivery_zones", force: true do |t|
     t.integer  "branch_id"
-    t.decimal  "delivery_charge"
+    t.decimal  "delivery_charge",      precision: 10, scale: 0
     t.string   "delivery_charge_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "radius"
-    t.decimal  "lat"
-    t.decimal  "lng"
+    t.decimal  "lat",                  precision: 10, scale: 0
+    t.decimal  "lng",                  precision: 10, scale: 0
     t.string   "address"
     t.integer  "country_id"
   end
@@ -141,7 +138,7 @@ ActiveRecord::Schema.define(version: 20140810085936) do
 
   create_table "item_option_options", force: true do |t|
     t.string   "name"
-    t.decimal  "price"
+    t.decimal  "price",          precision: 10, scale: 2
     t.integer  "item_option_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -199,7 +196,7 @@ ActiveRecord::Schema.define(version: 20140810085936) do
     t.string   "rule_items_ids"
     t.decimal  "rule_price_reached",      precision: 10, scale: 2
     t.decimal  "result_amount",           precision: 10, scale: 2
-    t.decimal  "result_percentage"
+    t.decimal  "result_percentage",       precision: 10, scale: 0
     t.string   "result_free_items"
     t.integer  "result_free_items_limit"
     t.datetime "created_at"
@@ -230,7 +227,7 @@ ActiveRecord::Schema.define(version: 20140810085936) do
 
   create_table "orders", force: true do |t|
     t.integer  "branch_id"
-    t.decimal  "delivery_price"
+    t.decimal  "delivery_price",   precision: 10, scale: 0
     t.string   "delivery_type"
     t.string   "currency"
     t.integer  "user_id"
